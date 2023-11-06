@@ -1,0 +1,77 @@
+
+███╗░░░███╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗███████╗
+████╗░████║██╔══██╗██╔══██╗██║░░██║██║████╗░██║██╔════╝
+██╔████╔██║███████║██║░░╚═╝███████║██║██╔██╗██║█████╗░░
+██║╚██╔╝██║██╔══██║██║░░██╗██╔══██║██║██║╚████║██╔══╝░░
+██║░╚═╝░██║██║░░██║╚█████╔╝██║░░██║██║██║░╚███║███████╗
+╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝╚══════╝
+
+██╗░░░░░███████╗░█████╗░██████╗░███╗░░██╗██╗███╗░░██╗░██████╗░
+██║░░░░░██╔════╝██╔══██╗██╔══██╗████╗░██║██║████╗░██║██╔════╝░
+██║░░░░░█████╗░░███████║██████╔╝██╔██╗██║██║██╔██╗██║██║░░██╗░
+██║░░░░░██╔══╝░░██╔══██║██╔══██╗██║╚████║██║██║╚████║██║░░╚██╗
+███████╗███████╗██║░░██║██║░░██║██║░╚███║██║██║░╚███║╚██████╔╝
+╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚══╝░╚═════╝░
+a estos modelos les damos muhcos datos para que puedan entrenarse y dar predcciones ocn datos que nunca han visto....
+pueden aprender imagenes, spam, etc....
+
+con programcion regular debemos explciarle que debe pasar en cada decision, pero en muchos casos reales las cosas son variables, y no predecibles con un algoritmo
+
+
+░█████╗░██████╗░██╗░░░░░██╗░█████╗░░█████╗░░█████╗░██╗░█████╗░███╗░░██╗██╗
+██╔══██╗██╔══██╗██║░░░░░██║██╔══██╗██╔══██╗██╔══██╗██║██╔══██╗████╗░██║╚═╝
+███████║██████╔╝██║░░░░░██║██║░░╚═╝███████║██║░░╚═╝██║██║░░██║██╔██╗██║░░░
+██╔══██║██╔═══╝░██║░░░░░██║██║░░██╗██╔══██║██║░░██╗██║██║░░██║██║╚████║░░░
+██║░░██║██║░░░░░███████╗██║╚█████╔╝██║░░██║╚█████╔╝██║╚█████╔╝██║░╚███║██╗
+╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝
+vehiculos autonomos...
+sistema de recomendaciones...
+analizar clientes para segmentarlos en su comportamiento...
+buscar y detectar anomalias...
+clasificar imagenes...
+
+
+░█████╗░███╗░░░███╗██████╗░██╗███████╗███╗░░██╗████████╗███████╗██╗
+██╔══██╗████╗░████║██╔══██╗██║██╔════╝████╗░██║╚══██╔══╝██╔════╝╚═╝
+███████║██╔████╔██║██████╦╝██║█████╗░░██╔██╗██║░░░██║░░░█████╗░░░░░
+██╔══██║██║╚██╔╝██║██╔══██╗██║██╔══╝░░██║╚████║░░░██║░░░██╔══╝░░░░░
+██║░░██║██║░╚═╝░██║██████╦╝██║███████╗██║░╚███║░░░██║░░░███████╗██╗
+╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░╚═╝╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚══════╝╚═╝
+Google Colab... En general es mas facil...
+Visual Studio Code... Funciona en tu computadora, debes intalar:
+    -Python
+    -Visual Studio Code
+        -Spanish
+        -Python
+        -Jupyter
+        para esto hay que crear libretas, en esta carpeta habra un archivo, igualemente la extension es .ipynb
+
+
+
+████████╗██╗██████╗░░█████╗░░██████╗██╗
+╚══██╔══╝██║██╔══██╗██╔══██╗██╔════╝╚═╝
+░░░██║░░░██║██████╔╝██║░░██║╚█████╗░░░░
+░░░██║░░░██║██╔═══╝░██║░░██║░╚═══██╗░░░
+░░░██║░░░██║██║░░░░░╚█████╔╝██████╔╝██╗
+░░░╚═╝░░░╚═╝╚═╝░░░░░░╚════╝░╚═════╝░╚═╝
+DE MACHINE LEARNING
+Aprendizaje Supervisado: Conjunto o set de datos con caracteristicas y etiqueta con la respuesta correcta
+    Regresion: predecir un dato numeroco continuo
+    Clasificacion: Predecir la categoria correcta
+
+Aprendizaje no Supervisado: Solo contamos con datos, y el modelo debe encontrar patrones y relaciones no tenemos datos por ejemplo: en una tienda hay 3 tipos de clientes: los que van mucho y compran poco, los que van poco y compran mucho, y los que vna mucho y compran mucho, y ocn esto los calsifica
+
+Aprendizaje por Refuerzo: Un agente aprende un ambiente por medio de acciones o retroalimentacion, un agente debe aprender por si solo, cambia por cada accion, por ejemplo, para aprender a jugar un juego, si hace un buen movieminto le sumamos puntos, y si no, le restamos, y asi...
+
+
+██████╗░░█████╗░░██████╗███████╗░██████╗██╗
+██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝╚═╝
+██████╦╝███████║╚█████╗░█████╗░░╚█████╗░░░░
+██╔══██╗██╔══██║░╚═══██╗██╔══╝░░░╚═══██╗░░░
+██████╦╝██║░░██║██████╔╝███████╗██████╔╝██╗
+╚═════╝░╚═╝░░╚═╝╚═════╝░╚══════╝╚═════╝░╚═╝
+los datos... son el corazon de cualquier proyecto de MACHINE LEARNING
+si tenemos malos daots tenemos un modelo mal entrenado, si tenemos buenos datos, variados, probablemente hara bueno resultados
+Se debe invertir en datos de calidad **
+    por ejemplo, datos relevantes**
+Los datos se deben separar en un conjuto de ENTRENAMIENTO y un conjunto de PRUEBAS
