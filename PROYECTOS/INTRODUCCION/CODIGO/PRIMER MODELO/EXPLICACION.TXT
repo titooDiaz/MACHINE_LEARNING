@@ -1,0 +1,36 @@
+
+██████╗░███████╗░██████╗░██████╗░███████╗░██████╗██╗░█████╗░███╗░░██╗
+██╔══██╗██╔════╝██╔════╝░██╔══██╗██╔════╝██╔════╝██║██╔══██╗████╗░██║
+██████╔╝█████╗░░██║░░██╗░██████╔╝█████╗░░╚█████╗░██║██║░░██║██╔██╗██║
+██╔══██╗██╔══╝░░██║░░╚██╗██╔══██╗██╔══╝░░░╚═══██╗██║██║░░██║██║╚████║
+██║░░██║███████╗╚██████╔╝██║░░██║███████╗██████╔╝██║╚█████╔╝██║░╚███║
+╚═╝░░╚═╝╚══════╝░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░╚═╝░╚════╝░╚═╝░░╚══╝
+
+██╗░░░░░██╗███╗░░██╗███████╗░█████╗░██╗░░░░░
+██║░░░░░██║████╗░██║██╔════╝██╔══██╗██║░░░░░
+██║░░░░░██║██╔██╗██║█████╗░░███████║██║░░░░░
+██║░░░░░██║██║╚████║██╔══╝░░██╔══██║██║░░░░░
+███████╗██║██║░╚███║███████╗██║░░██║███████╗
+╚══════╝╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚══════╝
+SI LOS GRAFICAMOS MUESTRAN UNA RELACION QUE DEBERIA SER REPRESENTADA CON UNA LINEA
+Por ejemplo con datos que se manteinen consatantes.. como por ejemplo la temperatura
+altura relacionada con el peso
+horas de trabajo con pago
+
+VAMOS A HACER UN EJEMPLO CON GRADOS
+Pasos:
+    Crear un conjunto de datos
+        debemos crear un conjunto de datos con su respectiva respuesta y entrada, en este caso, celsius y fahrenheit
+        LOS DATOS LOS GUARDAREMOS EN UN ARCHIVO CON LA EXTENSION csv
+        COLOCAREMOS LOS NOMBRES SEPARADOS POR COMAS Y LUEGO LOS EJEMPLOS:
+variable dependiente y variable independiente....
+por ejemplo, el peso depente de la EDAD Y DE LA ALTURA
+
+LINEA ES IGUAL A 
+y = mx+b
+b=punto de corte
+m=pendiente
+x=variable
+
+REGRSION LINEAL
+    cuadrados minimos o OLS

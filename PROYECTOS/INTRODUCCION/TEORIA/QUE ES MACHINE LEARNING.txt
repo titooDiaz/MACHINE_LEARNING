@@ -75,3 +75,19 @@ si tenemos malos daots tenemos un modelo mal entrenado, si tenemos buenos datos,
 Se debe invertir en datos de calidad **
     por ejemplo, datos relevantes**
 Los datos se deben separar en un conjuto de ENTRENAMIENTO y un conjunto de PRUEBAS
+ENTRENAMIENTO: se dan problemas con sus respectivas respuestas
+PRUEBAS: se evalua con otros datos..
+
+
+██████╗░░█████╗░░██████╗░██╗░░░██╗███████╗████████╗███████╗░██████╗██╗
+██╔══██╗██╔══██╗██╔═══██╗██║░░░██║██╔════╝╚══██╔══╝██╔════╝██╔════╝╚═╝
+██████╔╝███████║██║██╗██║██║░░░██║█████╗░░░░░██║░░░█████╗░░╚█████╗░░░░
+██╔═══╝░██╔══██║╚██████╔╝██║░░░██║██╔══╝░░░░░██║░░░██╔══╝░░░╚═══██╗░░░
+██║░░░░░██║░░██║░╚═██╔═╝░╚██████╔╝███████╗░░░██║░░░███████╗██████╔╝██╗
+╚═╝░░░░░╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚══════╝░░░╚═╝░░░╚══════╝╚═════╝░╚═╝
+PAQUETES EN PYTHON: necesitamos bibliotecas...
+Pandas... permite leer y analizar datos de manera sencilla y rapida
+NumPy... analiza datos con un alto desempe;o, utiliza el hardware de la mejor manera
+scikit - learn... agrupacion de datos, regrecion, etc...
+matplotip... mostrar graficos y crearlos
+tensorflow... redes neuronales
