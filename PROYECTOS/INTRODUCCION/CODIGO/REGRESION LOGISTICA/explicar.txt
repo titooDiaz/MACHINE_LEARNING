@@ -1,0 +1,26 @@
+██████╗░███████╗░██████╗░██████╗░███████╗░██████╗██╗░█████╗░███╗░░██╗
+██╔══██╗██╔════╝██╔════╝░██╔══██╗██╔════╝██╔════╝██║██╔══██╗████╗░██║
+██████╔╝█████╗░░██║░░██╗░██████╔╝█████╗░░╚█████╗░██║██║░░██║██╔██╗██║
+██╔══██╗██╔══╝░░██║░░╚██╗██╔══██╗██╔══╝░░░╚═══██╗██║██║░░██║██║╚████║
+██║░░██║███████╗╚██████╔╝██║░░██║███████╗██████╔╝██║╚█████╔╝██║░╚███║
+╚═╝░░╚═╝╚══════╝░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░╚═╝░╚════╝░╚═╝░░╚══╝
+
+██╗░░░░░░█████╗░░██████╗░██╗░██████╗████████╗██╗░█████╗░░█████╗░
+██║░░░░░██╔══██╗██╔════╝░██║██╔════╝╚══██╔══╝██║██╔══██╗██╔══██╗
+██║░░░░░██║░░██║██║░░██╗░██║╚█████╗░░░░██║░░░██║██║░░╚═╝███████║
+██║░░░░░██║░░██║██║░░╚██╗██║░╚═══██╗░░░██║░░░██║██║░░██╗██╔══██║
+███████╗╚█████╔╝╚██████╔╝██║██████╔╝░░░██║░░░██║╚█████╔╝██║░░██║
+╚══════╝░╚════╝░░╚═════╝░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚═╝
+
+es utilizada cuando queremos predecir una probabilidad
+por ejemplo, si queiremos saber si algo es un perro o un gato
+si es verdadero o falso
+
+Mietras la regresion lineal puede tener curvas, es decir, una funcion logstica (ver imagen)
+el valor de y debe ser entre 0 y 1, creando una forma de s
+
+porque los valores que se acercan a 0 son 0 y lso valores que se acercan a 1 son 1
+mientras que los que se alejan de estos posiblemnete no son nada....
+
+utiliza uno o mas datos para graficarlos
+pero no debemos ajustar una linea, ajusta una funcion en forma de s

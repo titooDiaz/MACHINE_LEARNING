@@ -1,0 +1,5 @@
+#escalameiento
+
+por la naturaleza de lsod atos algunos datos van a  ser mas peque;os,, el modelo lo va a mal interpretar, va a creer que los datos mas grandes, son mas importantes
+
+entonces debemos comprimir lso datos para que todos esten en un mismo rango...
