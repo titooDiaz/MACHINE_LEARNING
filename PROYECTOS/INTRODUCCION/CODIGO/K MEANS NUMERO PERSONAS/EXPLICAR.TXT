@@ -1,0 +1,27 @@
+
+██╗░░██╗
+██║░██╔╝
+█████═╝░
+██╔═██╗░
+██║░╚██╗
+╚═╝░░╚═╝
+
+███╗░░░███╗███████╗░█████╗░███╗░░██╗░██████╗
+████╗░████║██╔════╝██╔══██╗████╗░██║██╔════╝
+██╔████╔██║█████╗░░███████║██╔██╗██║╚█████╗░
+██║╚██╔╝██║██╔══╝░░██╔══██║██║╚████║░╚═══██╗
+██║░╚═╝░██║███████╗██║░░██║██║░╚███║██████╔╝
+╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░
+
+clusterizacion
+No supervisado
+
+hay muchas veces que tenemos muchos datos pero no con la etiqueta correct, pero tenemos que encontrar patrones...
+ cuantos grupos queremos crear?
+ colcoa dos puntos de manera aleatoria... y revisa los puntos que tenga mas cerca...
+ y sigue asi hasta que ecentre el lugar mas cercano a todos los puntos...
+
+LOS HIPERPARAMETROS AJSUTABLES SON:
+# de clusters
+# de iteraciones
+# de veces que correra el proceso con distintos puntos iniciales
