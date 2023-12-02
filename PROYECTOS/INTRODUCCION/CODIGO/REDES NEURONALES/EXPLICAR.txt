@@ -1,0 +1,35 @@
+
+██████╗░███████╗██████╗░███████╗░██████╗  
+██╔══██╗██╔════╝██╔══██╗██╔════╝██╔════╝  
+██████╔╝█████╗░░██║░░██║█████╗░░╚█████╗░  
+██╔══██╗██╔══╝░░██║░░██║██╔══╝░░░╚═══██╗  
+██║░░██║███████╗██████╔╝███████╗██████╔╝  
+╚═╝░░╚═╝╚══════╝╚═════╝░╚══════╝╚═════╝░  
+
+███╗░░██╗███████╗██╗░░░██╗██████╗░░█████╗░███╗░░██╗░█████╗░██╗░░░░░███████╗░██████╗
+████╗░██║██╔════╝██║░░░██║██╔══██╗██╔══██╗████╗░██║██╔══██╗██║░░░░░██╔════╝██╔════╝
+██╔██╗██║█████╗░░██║░░░██║██████╔╝██║░░██║██╔██╗██║███████║██║░░░░░█████╗░░╚█████╗░
+██║╚████║██╔══╝░░██║░░░██║██╔══██╗██║░░██║██║╚████║██╔══██║██║░░░░░██╔══╝░░░╚═══██╗
+██║░╚███║███████╗╚██████╔╝██║░░██║╚█████╔╝██║░╚███║██║░░██║███████╗███████╗██████╔╝
+╚═╝░░╚══╝╚══════╝░╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░
+
+ES UNA ESTRUCTURA QUE INTENTA SIMULAR EL CEREBRO HUMANO
+
+por que funciona?
+El perceptron es la base de las redes neuronales
+
+Eiste un "circulo" que se encarga de revisar todas las entradas, si el numero es es mas grande que el umbral, dara un resltado (1)... si no... dara otro resltado (0)
+
+pero como se entrena?
+se entrena con los patrones que le dan, en este caso son los datos del dataset
+
+
+ANTES DE ENTRAR AL CIRCULO CADA ENTRADA TIENE UN PESO... ESE PESO APORTARA UNA GRAN PARTE A LA RESPUESTA
+
+jugando con el peso y el umbral se peuden dar respuestas mas completas
+
+
+
+circulo (neuronas)
+umbral (sesgo)
+pesos (conexiones)
