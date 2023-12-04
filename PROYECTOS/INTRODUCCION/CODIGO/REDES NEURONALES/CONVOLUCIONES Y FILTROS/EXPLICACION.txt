@@ -1,0 +1,32 @@
+
+░█████╗░░█████╗░███╗░░██╗██╗░░░██╗░█████╗░██╗░░░░░██╗░░░██╗░█████╗░██╗░█████╗░███╗░░██╗███████╗░██████╗  
+██╔══██╗██╔══██╗████╗░██║██║░░░██║██╔══██╗██║░░░░░██║░░░██║██╔══██╗██║██╔══██╗████╗░██║██╔════╝██╔════╝  
+██║░░╚═╝██║░░██║██╔██╗██║╚██╗░██╔╝██║░░██║██║░░░░░██║░░░██║██║░░╚═╝██║██║░░██║██╔██╗██║█████╗░░╚█████╗░  
+██║░░██╗██║░░██║██║╚████║░╚████╔╝░██║░░██║██║░░░░░██║░░░██║██║░░██╗██║██║░░██║██║╚████║██╔══╝░░░╚═══██╗  
+╚█████╔╝╚█████╔╝██║░╚███║░░╚██╔╝░░╚█████╔╝███████╗╚██████╔╝╚█████╔╝██║╚█████╔╝██║░╚███║███████╗██████╔╝  
+░╚════╝░░╚════╝░╚═╝░░╚══╝░░░╚═╝░░░░╚════╝░╚══════╝░╚═════╝░░╚════╝░╚═╝░╚════╝░╚═╝░░╚══╝╚══════╝╚═════╝░  
+
+██╗░░░██╗  ███████╗██╗██╗░░░░░████████╗██████╗░░█████╗░░██████╗
+╚██╗░██╔╝  ██╔════╝██║██║░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔════╝
+░╚████╔╝░  █████╗░░██║██║░░░░░░░░██║░░░██████╔╝██║░░██║╚█████╗░
+░░╚██╔╝░░  ██╔══╝░░██║██║░░░░░░░░██║░░░██╔══██╗██║░░██║░╚═══██╗
+░░░██║░░░  ██║░░░░░██║███████╗░░░██║░░░██║░░██║╚█████╔╝██████╔╝
+░░░╚═╝░░░  ╚═╝░░░░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═════╝░
+
+sirven para regresiones y clasificaciones
+las redes densas son datos... quietos
+
+pero eso no funciona correctamente con las imagenes...
+porque debemos consiederar una misma caracteristica, y los nuemros se peuden mover en las entradas...
+
+para esos existen las redes neuronales convulcionales
+
+un filtro sirve para tranformar una imagen...
+
+podemos ahcerla borrosa....
+cada pixrlse puede representar de 0 a 255
+y el filtro lo que hace es sumar o restar un valor a cada pixel
+
+
+Ella no solo ajustan pesos y cesgos, tmabien ajusta filtros, y el por si sola aprende a crear filtros para crear patrones en la imagen...
+No aprende donde hay un pixel negro... aprende que tiene ciertas curvas.. y lineas...
