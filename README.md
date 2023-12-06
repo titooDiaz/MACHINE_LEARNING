@@ -5,7 +5,7 @@ El aprendizaje automático (machine learning) siempre me ha parecido una tarea s
 <hr/>
 
 Para ejecutar los proeyctos debes tener un conocimiento basico de TensorFlow!
-Mucha suerte!
+Mucha suerte con TODO!
 
 <hr/>
 
