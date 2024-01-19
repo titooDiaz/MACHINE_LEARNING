@@ -5,6 +5,7 @@ A medida que avances en el Curso intensivo de aprendizaje automático, podrás p
 El uso de tf.keras requiere, al menos, un poco de comprensión de las siguientes dos bibliotecas de código abierto de Python:
 
 NumPy, que simplifica la representación de arrays y la realización de operaciones de álgebra lineal. [Numpy](https://numpy.org/)
+<br>
 pandas, que proporciona una manera fácil de representar conjuntos de datos en la memoria. [Pandas](https://pandas.pydata.org/)
 
 Si no estás familiarizado con NumPy o Pandas, comienza con los siguientes dos ejercicios de Colab:
