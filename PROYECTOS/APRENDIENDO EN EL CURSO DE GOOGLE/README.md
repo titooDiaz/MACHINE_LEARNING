@@ -58,3 +58,29 @@ aproximadamente el 15%
 ### Ejercicio de Google
 [Practica!](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/playground-exercise?hl=es-419)
 Con este ejercicio podremos comprender un poco mas sobre los datos de entrenamiento...
+
+# Flujo de trabajo
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/WorkflowWithTestSet.svg?hl=es-419">
+
+### Figura 1: ¿Un flujo de trabajo posible?
+
+En la figura, "Ajustar el modelo" significa ajustar cualquier elemento del modelo que puedas imaginar, desde cambiar la tasa de aprendizaje hasta agregar o quitar atributos, o diseñar un modelo completamente nuevo desde cero. Al final de este flujo de trabajo, debes elegir el modelo que mejor se desempeñe con respecto al conjunto de prueba.
+
+Dividir el conjunto de datos en dos conjuntos es una buena idea, pero no una panacea. Para reducir en gran medida las posibilidades de sobreajuste, puedes particionar el conjunto de datos en los tres subconjuntos que se muestran en la siguiente figura:
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/PartitionThreeSets.svg?hl=es-419">
+
+### Figura 2: División de un único conjunto de datos en tres subconjuntos
+
+Usa el conjunto de validación para evaluar los resultados del conjunto de entrenamiento. A continuación, usa el conjunto de prueba para verificar la evaluación después de que el modelo haya "pasado" el conjunto de validación. En la siguiente figura, se muestra este nuevo flujo de trabajo:
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/WorkflowWithValidationSet.svg?hl=es-419">
+
+Figura 3: Un flujo de trabajo mejorado.
+
+### En este flujo de trabajo mejorado, sucede lo siguiente:
+
+Elige el modelo que mejor se desempeñe con el conjunto de validación.
+Vuelve a verificar el modelo con el conjunto de prueba.
+Este flujo de trabajo es más eficaz porque crea menos exposiciones al conjunto de prueba.
+
+#### Ejercicio: (ir al archivo *VALIDACION Y SETS DE DATOS* y completarlo)
