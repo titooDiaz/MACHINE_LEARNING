@@ -164,3 +164,6 @@ En lugar de tener un atributo de punto flotante, ahora tenemos 11 atributos bool
 
 
 Gracias a la discretización, nuestro modelo ahora puede aprender pesos completamente diferentes para cada latitud.
+
+
+# COMBINACIONES DE ATRIBUTOS
