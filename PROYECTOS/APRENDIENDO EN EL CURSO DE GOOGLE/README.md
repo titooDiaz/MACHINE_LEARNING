@@ -260,3 +260,8 @@ Los alumnos lineales se ajustan bien a los datos masivos. Usar combinaciones de 
 # Combinaciones de atributos: Ejercicio de programación
 
 Haremos un ejuercico muy util, ve al archivo: `rEPRESENTATION_WITH_A_FEATURE_CROSS.ipynb`
+[link](https://developers.google.com/machine-learning/crash-course/feature-crosses/programming-exercise?hl=es-419)
+
+# Combinaciones de atributos: Comprueba tu comprensión
+[Comprueba tu comprensión](https://developers.google.com/machine-learning/crash-course/feature-crosses/check-your-understanding?hl=es-419)
+
