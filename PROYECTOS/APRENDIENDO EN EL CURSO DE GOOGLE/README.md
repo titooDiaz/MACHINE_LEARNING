@@ -167,3 +167,92 @@ Gracias a la discretización, nuestro modelo ahora puede aprender pesos completa
 
 
 # COMBINACIONES DE ATRIBUTOS
+## Codificación de no linealidad
+
+<img src='https://developers.google.com/machine-learning/crash-course/images/LinearProblem1.png?hl=es-419'>
+¿Es un problema lineal?
+
+¿Puedes dibujar una línea que separe los árboles enfermos de los sanos? Claro. Este es un problema lineal. La línea no será perfecta. Uno o dos árboles enfermos pueden estar del lado "sano", pero la línea será un buen predictor.
+
+Ahora, observe la siguiente figura:
+
+<img src="https://developers.google.com/machine-learning/crash-course/images/LinearProblem2.png?hl=es-419">
+¿Es un problema lineal?
+
+¿Puedes trazar una sola línea recta que separe los árboles enfermos de los sanos? No, no puedes. Este es un problema no lineal. Cualquier línea que dibujes será un predictor deficiente del estado de los árboles.
+
+<img src="https://developers.google.com/machine-learning/crash-course/images/LinearProblemNot.png?hl=es-419">
+
+Para resolver el problema no lineal que se muestra en la Figura 2, crea una combinación de atributos. Una combinación de atributos es un atributo sintético que codifica la no linealidad en el espacio de los atributos al multiplicar dos o más atributos de entrada. (El término combinación proviene de productos cruzados). Creemos una combinación de atributos llamada x3 mediante la combinacion `x1` y `x2`
+`x3 = x1*x2`
+
+
+Tratamos esta combinación de atributos x3 como cualquier otro atributo. La fórmula lineal pasa a ser la siguiente:
+
+`y=b+w1*x1+w2*x2+w3*x3`
+
+Un algoritmo lineal puede aprender un peso para `w3`
+del mismo modo que para  `w1` y `w2` 
+En otras palabras, aunque `w3` codifica información no lineal, no necesitas cambiar la forma en la que se entrena el modelo lineal para determinar el valor de `w3`
+
+Tipos de combinaciones de atributos
+Es posible crear muchos tipos de combinaciones de atributos diferentes. Por ejemplo:
+
+[A X B]: Una combinación de atributos formada al multiplicar los valores de dos atributos.
+[A x B x C x D x E]: Una combinación de atributos formada al multiplicar los valores de cinco atributos.
+[A x A]: Una combinación de atributos formada al elevar al cuadrado un solo atributo.
+Gracias al descenso de gradientes estocástico, los modelos lineales se pueden entrenar de manera eficiente. En consecuencia, la complementación de los modelos lineales ajustados con combinaciones de atributos ha sido tradicionalmente una forma eficiente de entrenar conjuntos de datos de escala masiva.
+
+
+# Vectores de una sola combinacion
+Hasta ahora, nos hemos enfocado en la combinación de dos atributos de punto flotante individuales. En la práctica, los modelos de aprendizaje automático rara vez abarcan atributos continuos. Sin embargo, los modelos de aprendizaje automático suelen cruzar vectores de atributos one-hot. Piensa en combinaciones de atributos de vectores de un solo 1 como conjunciones lógicas. Por ejemplo, supongamos que tenemos dos atributos: país e idioma. Una codificación one-hot de cada una genera vectores con atributos binarios que pueden interpretarse como country=USA, country=France o language=English, language=Spanish. Luego, si realizas una combinación de atributos de estas codificaciones de un solo 1, obtienes atributos binarios que pueden interpretarse como conjunciones lógicas, como las siguientes:
+
+
+  country:usa AND language:spanish
+Como otro ejemplo, supongamos que discretizas latitud y longitud, lo que produce vectores de atributos de un solo 1 con cinco elementos. Por ejemplo, una latitud y longitud determinadas se pueden representar de la siguiente manera:
+
+
+  binned_latitude = [0, 0, 0, 1, 0]
+  binned_longitude = [0, 1, 0, 0, 0]
+Supongamos que creas una combinación de atributos de estos dos vectores de atributos:
+
+
+  binned_latitude X binned_longitude
+Esta combinación de atributos es un vector de un solo 1 con 25 elementos (24 ceros y 1 uno). El único 1 en la combinación identifica una conjunción en particular de latitud y longitud. El modelo puede aprender asociaciones particulares sobre esa conjunción.
+
+Supongamos que discretizamos latitud y longitud de manera mucho más amplia, de la siguiente manera:
+
+
+binned_latitude(lat) = [
+  0  < lat <= 10
+  10 < lat <= 20
+  20 < lat <= 30
+]
+
+binned_longitude(lon) = [
+  0  < lon <= 15
+  15 < lon <= 30
+]
+La creación de una combinación de atributos de esos discretizaciones groseras genera un atributo sintético con los siguientes significados:
+
+
+binned_latitude_X_longitude(lat, lon) = [
+  0  < lat <= 10 AND 0  < lon <= 15
+  0  < lat <= 10 AND 15 < lon <= 30
+  10 < lat <= 20 AND 0  < lon <= 15
+  10 < lat <= 20 AND 15 < lon <= 30
+  20 < lat <= 30 AND 0  < lon <= 15
+  20 < lat <= 30 AND 15 < lon <= 30
+]
+Ahora supongamos que nuestro modelo necesita predecir qué tan satisfechos estarán los dueños de perros con los perros en función de dos atributos:
+
+Tipo de comportamiento (ladrido, llanto, acurrucación, etc.)
+Hora del día
+Si compilamos una combinación de atributos a partir de estos dos atributos:
+
+
+  [behavior type X time of day]
+obtendremos una capacidad de predicción mucho mayor que cualquiera de las funciones. Por ejemplo, si un perro llora (de felicidad) a las 5:00 p.m. cuando el dueño regresa del trabajo, probablemente será un excelente predictor positivo de la satisfacción del propietario. Llorar (tal vez con tristeza) a las 3:00 a.m. cuando el propietario estaba durmiendo profundamente probablemente sea un fuerte predictor negativo de la satisfacción del propietario.
+
+Los alumnos lineales se ajustan bien a los datos masivos. Usar combinaciones de atributos en conjuntos de datos masivos es una estrategia eficiente para aprender modelos muy complejos. Las redes neuronales proporcionan otra estrategia
+[Practica!](https://developers.google.com/machine-learning/crash-course/feature-crosses/playground-exercises?hl=es-419)
