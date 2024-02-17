@@ -265,3 +265,34 @@ Haremos un ejuercico muy util, ve al archivo: `rEPRESENTATION_WITH_A_FEATURE_CRO
 # Combinaciones de atributos: Comprueba tu comprensión
 [Comprueba tu comprensión](https://developers.google.com/machine-learning/crash-course/feature-crosses/check-your-understanding?hl=es-419)
 
+# Regresión logística
+En lugar de predecir exactamente 0 o 1, la regresión logística genera una probabilidad, un valor entre 0 y 1, exclusivo. Por ejemplo, considera un modelo de regresión logística para la detección de spam. Si el modelo infiere un valor de 0.932 en un mensaje de correo electrónico en particular, implica una probabilidad del 93.2% de que el mensaje sea spam. Más precisamente, significa que, en el límite de ejemplos de entrenamiento infinitos, el conjunto de ejemplos para los que el modelo predice 0.932 será realmente spam el 93.2% de las veces, y el 6.8% restante no lo será.
+
+# Regresión logística: calcular una probabilidad 
+Muchos problemas requieren una estimación de probabilidad como resultado. La regresión logística es un mecanismo extremadamente eficiente para calcular las probabilidades. En términos prácticos, puedes usar la probabilidad que se muestra de cualquiera de las siguientes dos maneras:
+
+"Tal como está"
+Se convirtió en una categoría binaria.
+Consideremos cómo podemos usar la probabilidad “tal como está”. Supongamos que creamos un modelo de regresión logística para predecir la probabilidad de que un perro ladre durante la noche. A esa probabilidad la llamaremos:
+`p(ladridos/noche)`
+Si el modelo de regresión logística predice `p(ladridos/noche) =0.05`, el propietario de un perro deberá despertarse durante aproximadamente un año aproximadamente 18 veces:
+
+`numero_noches = p(ladridos/noche) * noches`
+<br>
+
+`18 = 0.05 *365`
+
+En muchos casos, asignarás el resultado de la regresión logística a la solución a un problema de clasificación binaria, en el que el objetivo es predecir correctamente una de dos etiquetas posibles (p.ej., "spam" o &no es spam?) Un módulo posterior se enfoca en eso.
+
+Es posible que te preguntes cómo un modelo de regresión logística puede garantizar un resultado que siempre se encuentre entre 0 y 1. A medida que sucede, una función sigmoidea, definida de la siguiente manera, produce resultados que tienen esas mismas características:
+
+`y= 1/1+e^(-z)`
+
+La función sigmoidea genera la siguiente representación:
+
+<img src="https://developers.google.com/machine-learning/crash-course/images/SigmoidFunction.png?hl=es-419">
+
+
+Si `z` representa el resultado de la capa lineal de un modelo entrenado con regresión logística, producirá un valor (una probabilidad) entre 0 y 1. En términos matemáticos:
+
+
