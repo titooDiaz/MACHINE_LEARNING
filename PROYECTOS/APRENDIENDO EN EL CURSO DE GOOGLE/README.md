@@ -2,6 +2,14 @@
   <img width="150px" src="https://i.ibb.co/bXvzjXm/LOGO-h1.png" />
 </p>
 
+# CURSO DE APRENDIZAJE AUTOMATICO HECHO POR GOOGLE
+## Introduccion:
+Este es un curso hecho por google, donde nos ofrece una amplia informacion para informarnos sobre `Tensorflow` su biblioteca de aprendizaje automatico
+Igualemente utilizaremos otras tecnologias, como numPy y Pandas
+
+[Curso que veremos](https://developers.google.com/machine-learning/crash-course/ml-intro?hl=es-419)
+[Cursos Basicos](https://developers.google.com/machine-learning?hl=es-419)
+
 # TENSORFLOW
 A medida que avances en el Curso intensivo de aprendizaje automático, podrás poner en práctica los conceptos del aprendizaje automático mediante la codificación de modelos en tf.keras. Usarás Colab como entorno de programación. Colab es la versión de Google de Notebook de Jupyter. Al igual que el notebook de Jupyter, Colab proporciona un entorno interactivo de programación de Python que combina texto, código, gráficos y resultados del programa.
 
