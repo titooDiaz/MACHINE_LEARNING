@@ -354,3 +354,5 @@ La precisión intenta responder a la siguiente pregunta:
 Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y la recuperación. Lamentablemente, la precisión y la recuperación suelen ser tensas. Es decir, la mejora de la precisión suele reducir la recuperación, y viceversa. Para explorar esta noción, observa la siguiente figura, que muestra 30 predicciones realizadas por un modelo de clasificación de correo electrónico. Las que se encuentran a la derecha del umbral de clasificación se clasifican como "spam", mientras que las de la izquierda se clasifican como "no es spam".
 
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
+
+# Clasificación: Curva ROC y AUC
