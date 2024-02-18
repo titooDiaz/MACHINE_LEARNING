@@ -304,3 +304,53 @@ La función sigmoidea genera la siguiente representación:
 Si `z` representa el resultado de la capa lineal de un modelo entrenado con regresión logística, producirá un valor (una probabilidad) entre 0 y 1. En términos matemáticos:
 
 
+# Clasificacion
+
+## Clasificación: Umbral 
+La regresión logística muestra una probabilidad. Puedes usar la probabilidad de que se muestre “tal como está” (por ejemplo, la probabilidad de que el usuario haga clic en este anuncio es 0.00023) o la convierte en un valor binario (por ejemplo, este correo electrónico es spam).
+
+Un modelo de regresión logística que muestra 0.9995 para un mensaje de correo electrónico en particular predice que es muy probable que sea spam. Por el contrario, otro mensaje de correo electrónico con una puntuación de predicción de 0.0003 en el mismo modelo de regresión logística es muy probable que no sea spam. Sin embargo, ¿qué ocurre con un mensaje de correo electrónico con una puntuación de predicción de 0.6? Para asignar un valor de regresión logística a una categoría binaria, debes definir un umbral de clasificación (también llamado umbral de decisión). Un valor por encima de ese umbral indica "spam" un valor por debajo indica "no spam" Es tentador suponer que el umbral de clasificación siempre debe ser 0.5, pero los umbrales dependen del problema y, por lo tanto, son valores que debes ajustar.
+
+En las siguientes secciones, se analizan con más detalle las métricas que puedes usar para evaluar las predicciones de un modelo de clasificación, así como el impacto del cambio del umbral de clasificación en estas predicciones.
+
+## Clasificación: Verdadero o falso y positivo o negativo
+
+En esta sección, definiremos los componentes básicos de las métricas que usaremos para evaluar los modelos de clasificación. Pero primero, una fábula:
+
+```
+Fábula de Esopo: El niño que gritó lobo (comprimido)
+
+Un joven pastor se aburre de cuidar el rebaño del pueblo Para divertirse, grita, "¡Lobo!", a pesar de que no hay un lobo a la vista. Los vecinos corren para proteger el rebaño, pero se enojan mucho cuando se dan cuenta de que el niño les estaba bromeando.
+
+[Repite el párrafo anterior N veces].
+
+Una noche, el joven pastor ve un lobo real acercándose al rebaño y grita: "¡Lobo!". Los vecinos se niegan a ser engañados otra vez y se quedan en sus casas. El hambriento lobo convierte el rebaño en cortes de cordero. El pueblo está hambriento. Se produce un pánico.
+```
+
+Hagamos las siguientes definiciones:
+
+"Lobo" es una clase positiva.
+Ningún lobo es una clase negativa.
+Podemos resumir nuestro modelo de "predicción de lobos" con una matriz de confusión de 2 x 2 que muestra los cuatro resultados posibles:
+
+<img src="./falso-positivo.png">
+
+
+Un verdadero positivo es un resultado en el que el modelo predice correctamente la clase positiva. De manera similar, un verdadero negativo es un resultado en el que el modelo predice correctamente la clase negativa.
+
+Un falso positivo es un resultado en el que el modelo predice de manera incorrecta la clase positiva. Y un falso negativo es un resultado en el que el modelo predice incorrectamente la clase negativa.
+
+En las siguientes secciones, veremos cómo evaluar los modelos de clasificación mediante métricas derivadas de estos cuatro resultados.
+
+# Clasificación: Precisión y recuperación
+La precisión intenta responder a la siguiente pregunta:
+
+`¿Qué proporción de identificaciones positivas fue correcta?`
+
+[informacion](https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=es-419)
+
+
+### Precisión y recuperación: una lucha incesante
+Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y la recuperación. Lamentablemente, la precisión y la recuperación suelen ser tensas. Es decir, la mejora de la precisión suele reducir la recuperación, y viceversa. Para explorar esta noción, observa la siguiente figura, que muestra 30 predicciones realizadas por un modelo de clasificación de correo electrónico. Las que se encuentran a la derecha del umbral de clasificación se clasifican como "spam", mientras que las de la izquierda se clasifican como "no es spam".
+
+[practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
