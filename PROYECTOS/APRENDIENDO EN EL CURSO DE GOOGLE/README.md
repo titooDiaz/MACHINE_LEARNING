@@ -356,8 +356,6 @@ Para evaluar completamente la efectividad de un modelo, debes examinar la precis
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
 
 
-/////////////////////FALTA POR LEER
-
 # Clasificación: Curva ROC y AUC
 [texto](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419)
 
@@ -387,3 +385,59 @@ Sin embargo, ambos motivos tienen advertencias, que pueden limitar la utilidad d
 La invariancia de escala no siempre es conveniente. Por ejemplo, a veces, realmente necesitamos resultados de probabilidad bien calibrados, y el AUC no nos dirá eso.
 
 La invariancia del umbral de clasificación no siempre es conveniente. En los casos en los que hay grandes disparidades en el costo de falsos negativos en comparación con los falsos positivos, puede ser crítico minimizar un tipo de error de clasificación. Por ejemplo, cuando realizas una detección de spam de correo electrónico, es probable que quieras priorizar la minimización de los falsos positivos (incluso si eso genera un aumento significativo de los falsos negativos). El AUC no es una métrica útil para este tipo de optimización.
+
+# Clasificación: Sesgo de predicción
+Un sesgo de predicción distinto de cero indica que hay un error en algún lugar del modelo, ya que indica que el modelo no está bien acerca de la frecuencia con la que se producen etiquetas positivas.
+
+Por ejemplo, supongamos que sabemos que, en promedio, el 1% de todos los correos electrónicos son spam. Si no sabemos nada sobre un correo electrónico determinado, debemos predecir que es probable que sea spam. Del mismo modo, un buen modelo de spam debería predecir, en promedio, que los correos electrónicos tienen un 1% de probabilidades de ser spam. (En otras palabras, si promediamos las probabilidades predichas de que cada correo electrónico individual sea spam, el resultado debería ser 1%). Si, en cambio, la predicción promedio del modelo es un 20% de probabilidades de ser spam, podemos concluir que muestra un sesgo de predicción.
+
+Las posibles causas raíz del sesgo de predicción son las siguientes:
+
+1. **Conjunto de atributos incompleto:**
+   - **Explicación:** Si el conjunto de atributos utilizado para entrenar el modelo no abarca todas las características relevantes para la tarea, el modelo puede no capturar completamente la complejidad del problema.
+   - **Efecto en el sesgo:** Puede llevar a que el modelo ignore aspectos importantes del fenómeno que está tratando de predecir, resultando en sesgo en las predicciones.
+
+2. **Conjunto de datos ruidoso:**
+   - **Explicación:** Si el conjunto de datos contiene información incorrecta, inconsistente o no representativa del fenómeno que se está modelando, el modelo puede aprender patrones no válidos.
+   - **Efecto en el sesgo:** El ruido en los datos puede llevar a que el modelo haga generalizaciones incorrectas y, por lo tanto, introduzca sesgo en las predicciones.
+
+3. **Canalización con errores:**
+   - **Explicación:** La canalización (pipeline) de datos y el preprocesamiento pueden introducir errores si no se realizan correctamente. Por ejemplo, escalado incorrecto, normalización inadecuada u otros errores en la manipulación de datos.
+   - **Efecto en el sesgo:** Errores en la canalización pueden afectar la calidad de los datos de entrada, lo que a su vez afecta la capacidad del modelo para aprender de manera precisa.
+
+4. **Muestra de entrenamiento sesgada:**
+   - **Explicación:** Si la muestra utilizada para entrenar el modelo no es representativa de la población general, el modelo puede aprender patrones específicos de la muestra que no se aplican de manera general.
+   - **Efecto en el sesgo:** Puede resultar en un modelo que no generaliza bien a datos nuevos y muestra sesgo hacia los patrones presentes en la muestra de entrenamiento.
+
+5. **Regularización demasiado intensa:**
+   - **Explicación:** La regularización es una técnica utilizada para prevenir el sobreajuste al penalizar coeficientes grandes en el modelo. Sin embargo, si la regularización es demasiado intensa, puede llevar a que el modelo simplifique en exceso, ignorando patrones importantes.
+   - **Efecto en el sesgo:** Una regularización excesiva puede introducir sesgo al forzar al modelo a ser demasiado simplista y perder detalles importantes en los datos.
+
+Está solucionando el síntoma en lugar de la causa.
+Creaste un sistema más frágil que ahora debes mantener actualizado.
+Si es posible, evita las capas de calibración. Los proyectos que usan capas de calibración tienden a depender de ellas, ya que usan capas de calibración para corregir todos los senos del modelo. En última instancia, mantener las capas de calibración puede convertirse en una pesadilla.
+
+***Agrupamiento y sesgo de predicción***
+La regresión logística predice un valor entre 0 y 1. Sin embargo, todos los ejemplos etiquetados son exactamente 0 (lo que significa, por ejemplo, &no es spam) o exactamente 1 (que significa, por ejemplo, &spam). Por lo tanto, cuando examinas el sesgo de predicción, no puedes determinar con exactitud el sesgo de predicción en función de un solo ejemplo. Debes examinar el sesgo de predicción en un bucket de ejemplos. Es decir, el sesgo de predicción para la regresión logística solo tiene sentido cuando se agrupan suficientes ejemplos como para poder comparar un valor previsto (por ejemplo, 0.392) con los valores observados (por ejemplo, 0.394).
+
+Puedes formar depósitos de las siguientes maneras:
+
+- Divide linealmente las predicciones objetivo.
+- Forma cuantiles.
+Considera el siguiente gráfico de calibración de un modelo en particular. Cada punto representa un bucket de 1,000 valores. Los ejes tienen los siguientes significados:
+
+El eje x representa el promedio de valores que el modelo predijo para ese bucket.
+El eje y representa el promedio real de los valores en el conjunto de datos para ese bucket.
+Ambos ejes son escalas logarítmicas.
+
+<img src='https://developers.google.com/static/machine-learning/crash-course/images/BucketingBias.svg?hl=es-419'>
+¿Por qué las predicciones son tan deficientes solo para parte del modelo? Estas son algunas posibilidades:
+
+El conjunto de entrenamiento no representa de forma adecuada ciertos subconjuntos del espacio de datos.
+Algunos subconjuntos de datos son más ruidosos que otros.
+El modelo está regularizado en exceso. (Considera reducir el valor de lambda).
+
+***Clasificación binaria: ejercicio de programación***
+En el siguiente [ejercicio](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/binary_classification.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=binary_classification_tf2-colab&hl=es-419), explorarás la clasificación binaria en TensorFlow:
+
+El archivo se llama: Binary_Classification
