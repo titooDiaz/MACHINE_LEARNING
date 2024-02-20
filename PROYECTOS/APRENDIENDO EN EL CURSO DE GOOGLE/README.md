@@ -356,3 +356,4 @@ Para evaluar completamente la efectividad de un modelo, debes examinar la precis
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
 
 # Clasificación: Curva ROC y AUC
+[texto](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419)
