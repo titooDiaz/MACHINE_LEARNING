@@ -355,5 +355,35 @@ Para evaluar completamente la efectividad de un modelo, debes examinar la precis
 
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
 
+
+/////////////////////FALTA POR LEER
+
 # Clasificación: Curva ROC y AUC
 [texto](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419)
+
+## ROC curve
+Una curva ROC representa TPR frente a FPR en diferentes umbrales de clasificación. Al disminuir el umbral de clasificación, se clasifican más elementos como positivos, lo que aumenta tanto los falsos positivos como los verdaderos positivos. En la siguiente figura, se muestra una curva ROC típica.
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/ROCCurve.svg?hl=es-419">
+Para calcular los puntos en una curva ROC, podríamos evaluar un modelo de regresión logística muchas veces con diferentes umbrales de clasificación, pero esto sería ineficiente. Afortunadamente, existe un algoritmo eficaz y basado en ordenamiento que puede proporcionarnos esta información, llamada AUC.
+
+## AUC: Área bajo la curva ROC
+AUC significa "área bajo la curva ROC". Es decir, el AUC mide el área bidimensional completa debajo de la curva ROC completa (piensa en un cálculo integral) de (0,0) a (1,1).
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/AUC.svg?hl=es-419">
+El AUC proporciona una medida agregada del rendimiento en todos los umbrales de clasificación posibles. Una forma de interpretar el AUC es como la probabilidad de que el modelo clasifique un ejemplo positivo aleatorio más alto que un ejemplo negativo aleatorio. Por ejemplo, en los siguientes ejemplos, que se ordenan de izquierda a derecha en orden ascendente con respecto a las predicciones de regresión logística:
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/AUCPredictionsRanked.svg?hl=es-419">
+
+El AUC representa la probabilidad de que un ejemplo aleatorio positivo (verde) se posicione a la derecha de un ejemplo aleatorio negativo (rojo).
+
+El AUC varía en valor de 0 a 1. Un modelo cuyas predicciones son un 100% incorrectas tiene un AUC de 0.0; uno cuyas predicciones son un 100% correctas tiene un AUC de 1.0.
+
+El AUC es conveniente por los siguientes dos motivos:
+
+El AUC es invariable con respecto a la escala. Mide qué tan bien se clasifican las predicciones, en lugar de sus valores absolutos.
+El AUC es invariable con respecto al umbral de clasificación. Mide la calidad de las predicciones del modelo, independientemente del umbral de clasificación elegido.
+Sin embargo, ambos motivos tienen advertencias, que pueden limitar la utilidad del AUC en ciertos casos prácticos:
+
+La invariancia de escala no siempre es conveniente. Por ejemplo, a veces, realmente necesitamos resultados de probabilidad bien calibrados, y el AUC no nos dirá eso.
+
+La invariancia del umbral de clasificación no siempre es conveniente. En los casos en los que hay grandes disparidades en el costo de falsos negativos en comparación con los falsos positivos, puede ser crítico minimizar un tipo de error de clasificación. Por ejemplo, cuando realizas una detección de spam de correo electrónico, es probable que quieras priorizar la minimización de los falsos positivos (incluso si eso genera un aumento significativo de los falsos negativos). El AUC no es una métrica útil para este tipo de optimización.
