@@ -441,3 +441,51 @@ El modelo está regularizado en exceso. (Considera reducir el valor de lambda).
 En el siguiente [ejercicio](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/binary_classification.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=binary_classification_tf2-colab&hl=es-419), explorarás la clasificación binaria en TensorFlow:
 
 El archivo se llama: Binary_Classification
+
+
+# Regularización para lograr dispersión
+
+***Regularización para lograr dispersión: Regularización L1***
+Los vectores dispersos a menudo contienen muchas dimensiones. Cuando se crea una combinación de atributos, se generan incluso más dimensiones. Dados estos vectores de atributos de dimensiones altas, el tamaño del modelo puede aumentar enormemente y requerir grandes cantidades de RAM.
+
+En un vector disperso de dimensiones altas, sería bueno motivar a los pesos a que se reduzcan exactamente a 0 siempre que sea posible. Un peso de exactamente 0 básicamente quita el atributo correspondiente del modelo. Cuando se extraen atributos, se ahorrará RAM y es posible que se reduzca el ruido en el modelo.
+
+Por ejemplo, considera un conjunto de datos de viviendas que abarque no solo California, sino todo el mundo. Cuando se agrupa la latitud del mundo en minutos (60 minutos por grado), se obtienen alrededor de 10,000 dimensiones en una codificación dispersa; la longitud global en minutos da alrededor de 20,000 dimensiones. Una combinación de estos dos atributos daría como resultado 200,000,000 dimensiones. Muchas de esas 200,000,000 dimensiones representan áreas con una residencia tan limitada (por ejemplo, el medio del océano) que sería difícil usar esos datos para generalizar de manera efectiva. Sería un poco absurdo pagar el costo de RAM de almacenar estas dimensiones innecesarias. Por lo tanto, sería bueno llevar los pesos de las dimensiones sin sentido a exactamente 0, lo que nos permitiría evitar pagar el costo de almacenamiento de estos coeficientes del modelo en el momento de la inferencia.
+
+Es posible que podamos codificar esta idea en el problema de optimización realizado durante el entrenamiento si agregamos un término de regularización elegido de forma adecuada.
+
+¿La regularización L2 puede completar esta tarea? Lamentablemente, no. La regularización L2 ayuda a reducir el tamaño de los pesos, pero no los lleva a exactamente 0.0.
+
+Una idea alternativa sería crear un término de regularización que penalice el recuento de valores de coeficiente distintos de cero en un modelo. El aumento de este recuento solo estaría justificado si hubiera una ganancia suficiente en la capacidad del modelo para ajustar los datos. Lamentablemente, si bien este enfoque basado en el conteo es intuitivamente atractivo, convertiría nuestro problema de optimización convexa en un problema de optimización no convexa. Por lo tanto, esta idea, conocida como regularización L0, no resulta útil en la práctica.
+
+Sin embargo, existe un término de regularización llamado regularización L1 que sirve como una aproximación a L0, pero tiene la ventaja de ser convexa y, por lo tanto, eficiente para su procesamiento. Entonces, podemos usar la regularización L1 para llevar los coeficientes sin información útil en nuestro modelo a exactamente 0 y, por lo tanto, ahorrar RAM durante la inferencia.
+
+**Diferencias entre regularizaciones L1 y L2**
+L2 y L1 penalizan los pesos de forma diferente:
+
+L2 penaliza peso2.
+L1 penaliza |peso|.
+En consecuencia, L2 y L1 tienen diferentes derivadas:
+
+La derivada de L2 es 2 * peso.
+La derivada de L1 es k (una constante cuyo valor es independiente del peso).
+Se puede pensar en la derivada de L2 como una fuerza que quita x% del peso todo el tiempo. Como ya sabía Zenón, incluso si quitas un porcentaje x de un número miles de millones de veces, el número disminuido nunca alcanzará el cero. (Zenón no estaba familiarizado con las limitaciones de precisión del punto flotante, que podrían producir exactamente cero). En cualquier caso, L2 normalmente no lleva los pesos a cero.
+
+Se puede pensar en la derivada de L1 como una fuerza que resta una constante de la ponderación todo el tiempo. Sin embargo, gracias a los valores absolutos, L1 tiene una discontinuidad en 0, que hace que las restas que superen 0 queden en cero. Por ejemplo, si la resta fuerza un peso de +0.1 a -0.2, L1 establecerá el peso en exactamente 0. ¡Eureka! L1 llevó el peso a cero.
+
+La regularización L1, al penalizar el valor absoluto de todos los pesos, es muy eficiente para los modelos amplios.
+
+Ten en cuenta que esta descripción es verdadera para un modelo unidimensional.
+[ver](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/l1-regularization?hl=es-419)
+
+***Regularización para lograr dispersión: Ejercicio de Playground***
+
+*Examen de la regularización L1*
+Este ejercicio contiene un conjunto de datos de entrenamiento pequeño y un poco ruidoso. En este tipo de escenario, el sobreajuste es un problema real. La regularización podría ayudar, pero ¿qué forma de regularización?
+
+Este ejercicio consta de cinco tareas relacionadas. Para simplificar las comparaciones en las cinco tareas, ejecuta cada tarea en una pestaña independiente. Ten en cuenta que el espesor de las líneas que conectan ATRIBUTOS con SALIDA representa las ponderaciones relativas de cada atributo.
+
+[patio de jeugos](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/playground-exercise?hl=es-419)
+[examen](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/check-your-understanding?hl=es-419)
+
+En definitiva l1 es mas util a la hora de hacer un modelo menos pesado
