@@ -5,24 +5,18 @@
 # CURSO DE APRENDIZAJE AUTOMATICO HECHO POR GOOGLE
 
 ## Tabla de contenido:
-1. [Introducción](#introduction)
-2. [Introducción](#introduction)
-3. [Introducción](#introduction)
-4. [Introducción](#introduction)
-5. [Introducción](#introduction)
-6. [Introducción](#introduction)
-7. [Introducción](#introduction)
-8. [Introducción](#introduction)
-9. [Introducción](#introduction)
-10. [Introducción](#introduction)
-11. [Introducción](#introduction)
-12. [Introducción](#introduction)
-13. [Introducción](#introduction)
-14. [Introducción](#introduction)
-15. [Introducción](#introduction)
-16. [Introducción](#introduction)
-17. [Introducción](#introduction)
-18. [Introducción](#introduction)
+1. [Introducción](#introduction) [👻](https://developers.google.com/machine-learning/crash-course/ml-intro?hl=es-419)
+2. [generalizacion](#generalizacion) [👻](https://developers.google.com/machine-learning/crash-course/generalization/video-lecture?hl=es-419)
+3. [generalizacion](#representacion) [👻](https://developers.google.com/machine-learning/crash-course/representation/video-lecture?hl=es-419)
+4. [generalizacion](#combinacion)
+5. [generalizacion](#vectores)
+6. [generalizacion](#regresion) [👻](https://developers.google.com/machine-learning/crash-course/logistic-regression/video-lecture?hl=es-419)
+7. [generalizacion](#clasificaion) [👻](https://developers.google.com/machine-learning/crash-course/classification/video-lecture?hl=es-419)
+8. [generalizacion](#regularizacion) [👻](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/video-lecture?hl=es-419)
+9. [generalizacion](#redesneuronales) [👻](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture?hl=es-419)
+10. [](#) [👻]()
+11. [](#) [👻]()
+12. [](#) [👻]()
 
 ## Introduccion: <p id="introduction">
 Este es un curso hecho por google, donde nos ofrece una amplia informacion para informarnos sobre `Tensorflow` su biblioteca de aprendizaje automatico
@@ -49,7 +43,7 @@ Ejercicio de Colab sobre el instructivo rápido de Pandas, que brinda toda la in
 
 <br>
 
-## Generalizacion
+## Generalizacion <p id="generalizacion">
 Guillermo de Ockham, un fraile y filósofo del siglo XIV, amaba la simplicidad. Creía que los científicos deberían preferir lo más simple fórmulas o teorías sobre otras más complejas. Para poner la navaja de Ockham en la máquina Términos de aprendizaje:
 `Cuanto menos complejo sea un modelo de ML, más probable es que se obtenga un buen resultado empírico no se debe solo a las peculiaridades de la muestra.`
 
@@ -113,7 +107,9 @@ aproximadamente el 15%
 [Practica!](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/playground-exercise?hl=es-419)
 Con este ejercicio podremos comprender un poco mas sobre los datos de entrenamiento...
 
-# Flujo de trabajo
+<br>
+
+***Flujo de trabajo***
 
 <br>
 
@@ -151,7 +147,9 @@ Este flujo de trabajo es más eficaz porque crea menos exposiciones al conjunto 
 
 <br>
 
-# Ingeniería de atributos
+***Ingeniería de atributos***
+
+<br>
 
 Cómo asignar valores numéricos
 Los datos de número entero y de punto flotante no necesitan una codificación especial porque se pueden multiplicar por un peso numérico. Como se sugiere en la Figura 2, convertir el valor entero sin procesar 6 en el valor de atributo 6.0 es sencillo:
@@ -202,7 +200,7 @@ Este enfoque crea de manera efectiva una variable booleana para cada valor de at
 
 Del mismo modo, si una casa se encuentra en la esquina de dos calles, entonces dos valores binarios se establecen en 1, y el modelo usa ambos pesos respectivos.
 
-# Representación: Limpieza de datos 
+# Representación: Limpieza de datos <p id="representacion">
 
 Los manzanos producen una mezcla de frutas excelentes y gusanos. Sin embargo, las manzanas que se muestran en los supermercados refinados son frutas 100% perfectas. Entre el huerto y el supermercado, alguien pasa mucho tiempo quitando las manzanas en mal estado o lanzando un poco de cera sobre las que se pueden recuperar. Como ingeniero de AA, dedicarás una gran cantidad de tu tiempo a desechar ejemplos malos y limpiar los que se pueden recuperar. Incluso unas pocas "manzanas en mal estado" pueden arruinar un gran conjunto de datos.
 
@@ -257,7 +255,7 @@ En lugar de tener un atributo de punto flotante, ahora tenemos 11 atributos bool
 Gracias a la discretización, nuestro modelo ahora puede aprender pesos completamente diferentes para cada latitud.
 
 
-# COMBINACIONES DE ATRIBUTOS
+# COMBINACIONES DE ATRIBUTOS <p id="combinacion">
 ***Codificación de no linealidad***
 
 <br>
@@ -300,7 +298,7 @@ Es posible crear muchos tipos de combinaciones de atributos diferentes. Por ejem
 Gracias al descenso de gradientes estocástico, los modelos lineales se pueden entrenar de manera eficiente. En consecuencia, la complementación de los modelos lineales ajustados con combinaciones de atributos ha sido tradicionalmente una forma eficiente de entrenar conjuntos de datos de escala masiva.
 
 
-# Vectores de una sola combinacion
+# Vectores de una sola combinacion <p id="vectores">
 
 Hasta ahora, nos hemos enfocado en la combinación de dos atributos de punto flotante individuales. En la práctica, los modelos de aprendizaje automático rara vez abarcan atributos continuos. Sin embargo, los modelos de aprendizaje automático suelen cruzar vectores de atributos one-hot. Piensa en combinaciones de atributos de vectores de un solo 1 como conjunciones lógicas. Por ejemplo, supongamos que tenemos dos atributos: país e idioma. Una codificación one-hot de cada una genera vectores con atributos binarios que pueden interpretarse como country=USA, country=France o language=English, language=Spanish. Luego, si realizas una combinación de atributos de estas codificaciones de un solo 1, obtienes atributos binarios que pueden interpretarse como conjunciones lógicas, como las siguientes:
 
@@ -371,7 +369,7 @@ Haremos un ejuercico muy util, ve al archivo: `rEPRESENTATION_WITH_A_FEATURE_CRO
 
 [Comprueba tu comprensión](https://developers.google.com/machine-learning/crash-course/feature-crosses/check-your-understanding?hl=es-419)
 
-# Regresión logística
+# Regresión logística <p id="regresion">
 En lugar de predecir exactamente 0 o 1, la regresión logística genera una probabilidad, un valor entre 0 y 1, exclusivo. Por ejemplo, considera un modelo de regresión logística para la detección de spam. Si el modelo infiere un valor de 0.932 en un mensaje de correo electrónico en particular, implica una probabilidad del 93.2% de que el mensaje sea spam. Más precisamente, significa que, en el límite de ejemplos de entrenamiento infinitos, el conjunto de ejemplos para los que el modelo predice 0.932 será realmente spam el 93.2% de las veces, y el 6.8% restante no lo será.
 
 ***Regresión logística: calcular una probabilidad ***
@@ -402,7 +400,7 @@ La función sigmoidea genera la siguiente representación:
 Si `z` representa el resultado de la capa lineal de un modelo entrenado con regresión logística, producirá un valor (una probabilidad) entre 0 y 1. En términos matemáticos:
 
 
-# Clasificacion
+# Clasificacion <p id="clasificaion">
 
 <br>
 
@@ -449,7 +447,11 @@ Un falso positivo es un resultado en el que el modelo predice de manera incorrec
 
 En las siguientes secciones, veremos cómo evaluar los modelos de clasificación mediante métricas derivadas de estos cuatro resultados.
 
-# Clasificación: Precisión y recuperación
+<br>
+
+***Clasificación: Precisión y recuperación***
+
+<br>
 
 La precisión intenta responder a la siguiente pregunta:
 
@@ -467,8 +469,12 @@ Para evaluar completamente la efectividad de un modelo, debes examinar la precis
 
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
 
+<br>
 
-# Clasificación: Curva ROC y AUC
+***Clasificación: Curva ROC y AUC***
+
+<br>
+
 [texto](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419)
 
 <br>
@@ -508,7 +514,12 @@ La invariancia de escala no siempre es conveniente. Por ejemplo, a veces, realme
 
 La invariancia del umbral de clasificación no siempre es conveniente. En los casos en los que hay grandes disparidades en el costo de falsos negativos en comparación con los falsos positivos, puede ser crítico minimizar un tipo de error de clasificación. Por ejemplo, cuando realizas una detección de spam de correo electrónico, es probable que quieras priorizar la minimización de los falsos positivos (incluso si eso genera un aumento significativo de los falsos negativos). El AUC no es una métrica útil para este tipo de optimización.
 
-# Clasificación: Sesgo de predicción
+<br>
+
+***Clasificación: Sesgo de predicción***
+
+<br>
+
 Un sesgo de predicción distinto de cero indica que hay un error en algún lugar del modelo, ya que indica que el modelo no está bien acerca de la frecuencia con la que se producen etiquetas positivas.
 
 Por ejemplo, supongamos que sabemos que, en promedio, el 1% de todos los correos electrónicos son spam. Si no sabemos nada sobre un correo electrónico determinado, debemos predecir que es probable que sea spam. Del mismo modo, un buen modelo de spam debería predecir, en promedio, que los correos electrónicos tienen un 1% de probabilidades de ser spam. (En otras palabras, si promediamos las probabilidades predichas de que cada correo electrónico individual sea spam, el resultado debería ser 1%). Si, en cambio, la predicción promedio del modelo es un 20% de probabilidades de ser spam, podemos concluir que muestra un sesgo de predicción.
@@ -565,7 +576,7 @@ En el siguiente [ejercicio](https://colab.research.google.com/github/google/eng-
 El archivo se llama: Binary_Classification
 
 
-# Regularización para lograr dispersión
+# Regularización para lograr dispersión <p id="regularizacion">
 
 <br>
 
@@ -621,7 +632,7 @@ Este ejercicio consta de cinco tareas relacionadas. Para simplificar las compara
 
 En definitiva l1 es mas util a la hora de hacer un modelo menos pesado
 
-# Redes neuronales: Estructura
+# Redes neuronales: Estructura <p id="redesneuronales">
 
 <br>
 
