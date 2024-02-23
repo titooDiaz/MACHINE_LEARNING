@@ -558,3 +558,13 @@ Un conjunto de nodos, análogos a las neuronas, organizados en capas.
 Un conjunto de pesos que representan las conexiones entre cada capa de la red neuronal y la capa inferior. La capa inferior puede ser otra capa de la red neuronal u otro tipo de capa.
 Un conjunto de sesgos, uno para cada nodo.
 Una función de activación que transforma el resultado de cada nodo en una capa. Las diferentes capas pueden tener diferentes funciones de activación.
+
+***Redes neuronales: Ejercicios de Playground***
+
+[ejercicio](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/playground-exercises?hl=es-419 )
+
+
+*ejercicio de codigo*
+[click para ejercucui](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/programming-exercise?hl=es-419)
+<br>
+El nombre del archivo es Intro_to_Neural_Nets.ipynb
