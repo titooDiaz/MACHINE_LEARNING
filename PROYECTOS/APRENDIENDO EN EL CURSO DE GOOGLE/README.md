@@ -489,3 +489,72 @@ Este ejercicio consta de cinco tareas relacionadas. Para simplificar las compara
 [examen](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/check-your-understanding?hl=es-419)
 
 En definitiva l1 es mas util a la hora de hacer un modelo menos pesado
+
+# Redes neuronales: Estructura
+***Redes neuronales: Estructura***
+
+Si recuerdas la unidad [Combinaciones](https://developers.google.com/machine-learning/crash-course/feature-crosses/video-lecture?hl=es-419) de atributos, el siguiente problema de clasificación no es lineal:
+<img src="https://developers.google.com/machine-learning/crash-course/images/FeatureCrosses1.png?hl=es-419">
+“No lineal” significa que no puedes predecir con exactitud una etiqueta con un modelo con la forma b + w1x1 + w2x2
+En otras palabras, la superficie de decisión no es una línea. Anteriormente, observamos las [Combinaciones de atributos](https://developers.google.com/machine-learning/crash-course/feature-crosses/video-lecture?hl=es-419) como un enfoque posible para modelar problemas no lineales.
+
+Ahora considera el siguiente conjunto de datos:
+
+<img src="https://developers.google.com/machine-learning/crash-course/images/NonLinearSpiral.png?hl=es-419">
+
+El conjunto de datos que se muestra en la figura 2 no se puede resolver con un modelo lineal.
+
+Para ver cómo las redes neuronales pueden ayudar con problemas no lineales, comencemos por representar un modelo lineal como un gráfico:
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/linear_net.svg?hl=es-419">
+Cada círculo azul representa un atributo de entrada, y el círculo verde representa la suma ponderada de las entradas.
+
+¿Cómo podemos modificar este modelo para mejorar su capacidad de abordar problemas no lineales?
+
+*Capas ocultas*
+En el modelo que se muestra en el siguiente gráfico, agregamos una capa oculta de valores intermedios. Cada nodo amarillo en la capa oculta es una suma ponderada de los valores del nodo de entrada azul. El resultado es una suma ponderada de los nodos amarillos.
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/1hidden.svg?hl=es-419">
+
+Este modelo es lineal? Sí, su resultado sigue siendo una combinación lineal de sus entradas.
+
+En el modelo que se muestra en el siguiente gráfico, agregamos una segunda capa oculta de sumas ponderadas.
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/2hidden.svg?hl=es-419">
+¿Este modelo es lineal? Sí, lo es. Cuando expresas el resultado como una función de la entrada y lo simplificas, obtienes otra suma ponderada de las entradas. Esta suma no modelará el problema no lineal de la Figura 2.
+
+*Funciones de activación*
+Para modelar un problema no lineal, podemos introducir directamente una no linealidad. Podemos canalizar cada nodo de capa oculta a través de una función no lineal.
+
+En el modelo que se muestra en el siguiente grafo, una función no lineal transforma el valor de cada nodo en la capa 1 oculta antes de pasar a las sumas ponderadas de la siguiente capa. Esta función no lineal se denomina función de activación.
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/activation.svg?hl=es-419">
+
+
+Ahora que hemos agregado una función de activación, agregar capas tiene más impacto. Apilar no linealidades sobre no linealidades nos permite modelar relaciones muy complicadas entre las entradas y las salidas previstas. En resumen, cada capa aprende de manera eficaz una función más compleja y de nivel superior sobre las entradas sin procesar. Si deseas tener más intuición de cómo funciona esto, consulta la [excelente entrada de blog de Chris Olah.](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)
+
+*Funciones de activación comunes*
+La siguiente función de activación sigmoidea convierte la suma ponderada en un valor entre 0 y 1.
+
+f(x) = 1/1+e ^(-x)
+Graficado:
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/sigmoid.svg?hl=es-419">
+La siguiente función de activación de unidad lineal rectificada (o ReLU, por sus siglas en inglés) a menudo funciona mejor que una función suave, como la sigmoide, y es mucho más fácil de calcular.
+
+f(x) = max(0,x)
+
+La superioridad de la ReLU se basa en resultados empíricos, probablemente debido a que ReLU tiene un rango de capacidad de respuesta más útil. La capacidad de respuesta de una función sigmoidea se reduce relativamente rápido en ambos lados.
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/relu.svg?hl=es-419">
+
+De hecho, cualquier función matemática puede servir como función de activación. Supongamos que `o` representa nuestra función de activación (Relu, Sigmoid o cualquier otra). En consecuencia, el valor de un nodo en la red se proporciona mediante la siguiente fórmula:
+`o(w*x+b)`
+
+TensorFlow proporciona compatibilidad [lista para usar en muchas funciones de activación](https://www.tensorflow.org/api_docs/python/tf/nn). Puedes encontrar estas funciones de activación en la lista de wrappers para operaciones de redes neuronales básicas de TensorFlow. Sin embargo, recomendamos comenzar con ReLU.
+
+**resumen**
+Ahora, nuestro modelo tiene todos los componentes estándar de lo que las personas generalmente significan cuando dicen &red neuronal:
+
+Un conjunto de nodos, análogos a las neuronas, organizados en capas.
+Un conjunto de pesos que representan las conexiones entre cada capa de la red neuronal y la capa inferior. La capa inferior puede ser otra capa de la red neuronal u otro tipo de capa.
+Un conjunto de sesgos, uno para cada nodo.
+Una función de activación que transforma el resultado de cada nodo en una capa. Las diferentes capas pueden tener diferentes funciones de activación.
