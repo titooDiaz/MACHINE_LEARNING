@@ -3,7 +3,28 @@
 </p>
 
 # CURSO DE APRENDIZAJE AUTOMATICO HECHO POR GOOGLE
-## Introduccion:
+
+## Tabla de contenido:
+1. [Introducción](#introduction)
+2. [Introducción](#introduction)
+3. [Introducción](#introduction)
+4. [Introducción](#introduction)
+5. [Introducción](#introduction)
+6. [Introducción](#introduction)
+7. [Introducción](#introduction)
+8. [Introducción](#introduction)
+9. [Introducción](#introduction)
+10. [Introducción](#introduction)
+11. [Introducción](#introduction)
+12. [Introducción](#introduction)
+13. [Introducción](#introduction)
+14. [Introducción](#introduction)
+15. [Introducción](#introduction)
+16. [Introducción](#introduction)
+17. [Introducción](#introduction)
+18. [Introducción](#introduction)
+
+## Introduccion: <p id="introduction">
 Este es un curso hecho por google, donde nos ofrece una amplia informacion para informarnos sobre `Tensorflow` su biblioteca de aprendizaje automatico
 Igualemente utilizaremos otras tecnologias, como numPy y Pandas
 
@@ -26,18 +47,27 @@ Si no estás familiarizado con NumPy o Pandas, comienza con los siguientes dos e
 Ejercicio de Colab de NumPy UltraQuick Tutorial, que brinda toda la información de NumPy que necesitas para este curso. (NUMPY TUTORIAL)
 Ejercicio de Colab sobre el instructivo rápido de Pandas, que brinda toda la información que necesitas sobre este curso. (PANDAS TUTORIAL)
 
+<br>
+
 ## Generalizacion
 Guillermo de Ockham, un fraile y filósofo del siglo XIV, amaba la simplicidad. Creía que los científicos deberían preferir lo más simple fórmulas o teorías sobre otras más complejas. Para poner la navaja de Ockham en la máquina Términos de aprendizaje:
 `Cuanto menos complejo sea un modelo de ML, más probable es que se obtenga un buen resultado empírico no se debe solo a las peculiaridades de la muestra.`
 
 <br>
+
 Un modelo de aprendizaje automático tiene como objetivo hacer buenas predicciones sobre datos nunca antes vistos. Pero si está construyendo un modelo a partir de su conjunto de datos, ¿cómo obtendría los datos nunca antes vistos? Pozo Una forma es dividir el conjunto de datos en dos subconjuntos:
+
 <br>
+
 Conjunto de entrenamiento: un subconjunto para entrenar un modelo.
 Conjunto de pruebas: un subconjunto para probar el modelo.
+
 <br>
+
 Un buen rendimiento en el equipo de prueba es un indicador útil de un buen rendimiento sobre los nuevos datos en general, asumiendo que:
+
 <br>
+
 El equipo de prueba es lo suficientemente grande.
 No se hace trampa utilizando el mismo conjunto de pruebas una y otra vez.
 
@@ -46,7 +76,12 @@ El set de prueba es el que menos datos debe contener, ya que el entrenamiento es
 Conjunto de entrenamiento: Un subconjunto para entrenar un modelo.
 Conjunto de prueba: Un subconjunto para probar el modelo entrenado.
 Puedes imaginarte dividir el único conjunto de datos de la siguiente manera:
+
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/PartitionTwoSets.svg?hl=es-419">
+
+<br>
 
 Asegúrate de que tu conjunto de prueba cumpla con las siguientes dos condiciones:
 
@@ -54,52 +89,79 @@ Sea lo suficientemente grande como para generar resultados significativos desde 
 Que sea representativo del conjunto de datos en su conjunto. En otras palabras, no elijas un conjunto de prueba con características diferentes a las del conjunto de entrenamiento.
 
 Nunca uses datos de prueba para el entrenamiento. Si ves resultados sorprendentemente buenos en tus métricas de evaluación, puede ser una señal de que estás entrenando accidentalmente en el conjunto de prueba. Por ejemplo, una precisión alta puede indicar que los datos de prueba se filtraron en el conjunto de entrenamiento.
+
 <br>
+
 Para saber que tantos datos necesita nuestro modelo  para trabajar correctamente, podemos crear conjuntos de entrenamiento y prueba
+
 <br>
+
 Cuando el conjunto de entrenamiento es mas grande, la capacidad del modelo de predecir crece significativamente...
 A mayor conjunto de prueba, mayor sera la confianza de los resultados
+
 <br>
+
 Es bueno tener un conjunto de datos MUY GRANDE
 aproximadamente el 15%
 
-### Ejercicio de Google
+<br>
+
+***Ejercicio de Google***
+
+<br>
+
 [Practica!](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/playground-exercise?hl=es-419)
 Con este ejercicio podremos comprender un poco mas sobre los datos de entrenamiento...
 
 # Flujo de trabajo
-<img src="https://developers.google.com/static/machine-learning/crash-course/images/WorkflowWithTestSet.svg?hl=es-419">
 
-### Figura 1: ¿Un flujo de trabajo posible?
+<br>
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/WorkflowWithTestSet.svg?hl=es-419">
 
 En la figura, "Ajustar el modelo" significa ajustar cualquier elemento del modelo que puedas imaginar, desde cambiar la tasa de aprendizaje hasta agregar o quitar atributos, o diseñar un modelo completamente nuevo desde cero. Al final de este flujo de trabajo, debes elegir el modelo que mejor se desempeñe con respecto al conjunto de prueba.
 
 Dividir el conjunto de datos en dos conjuntos es una buena idea, pero no una panacea. Para reducir en gran medida las posibilidades de sobreajuste, puedes particionar el conjunto de datos en los tres subconjuntos que se muestran en la siguiente figura:
 
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/PartitionThreeSets.svg?hl=es-419">
 
-### Figura 2: División de un único conjunto de datos en tres subconjuntos
+<br>
 
 Usa el conjunto de validación para evaluar los resultados del conjunto de entrenamiento. A continuación, usa el conjunto de prueba para verificar la evaluación después de que el modelo haya "pasado" el conjunto de validación. En la siguiente figura, se muestra este nuevo flujo de trabajo:
+
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/WorkflowWithValidationSet.svg?hl=es-419">
 
-Figura 3: Un flujo de trabajo mejorado.
+<br>
 
-### En este flujo de trabajo mejorado, sucede lo siguiente:
+***En este flujo de trabajo mejorado, sucede lo siguiente:***
+
+<br>
 
 Elige el modelo que mejor se desempeñe con el conjunto de validación.
 Vuelve a verificar el modelo con el conjunto de prueba.
 Este flujo de trabajo es más eficaz porque crea menos exposiciones al conjunto de prueba.
 
-#### Ejercicio: (ir al archivo *VALIDACION Y SETS DE DATOS* y completarlo)
+<br>
 
+***Ejercicio: (ir al archivo *VALIDACION Y SETS DE DATOS* y completarlo)***
+
+<br>
 
 # Ingeniería de atributos
+
 Cómo asignar valores numéricos
 Los datos de número entero y de punto flotante no necesitan una codificación especial porque se pueden multiplicar por un peso numérico. Como se sugiere en la Figura 2, convertir el valor entero sin procesar 6 en el valor de atributo 6.0 es sencillo:
+
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/FloatingPointFeatures.svg?hl=es-419">
 
 <br>
+
 Asignación de valores categóricos
 Los atributos categóricos tienen un conjunto discreto de valores posibles. Por ejemplo, podría haber una función llamada street_name con opciones que incluyan las siguientes:
 
@@ -130,13 +192,18 @@ La longitud de este vector es igual a la cantidad de elementos en el vocabulario
 
 La figura 3 ilustra una codificación one-hot de una calle determinada: Shorebird Way. El elemento del vector binario de Shorebird Way tiene un valor de 1, mientras que los elementos de todas las demás calles tienen un valor de 0.
 
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/OneHotEncoding.svg?hl=es-419">
+
+<br>
 
 Este enfoque crea de manera efectiva una variable booleana para cada valor de atributo (p.ej., nombre de la calle). En este caso, si una casa se encuentra en Shorebird Way, el valor binario es solo 1 para Shorebird Way. Por lo tanto, el modelo utiliza solo el peso para la calle Shorebird Way.
 
 Del mismo modo, si una casa se encuentra en la esquina de dos calles, entonces dos valores binarios se establecen en 1, y el modelo usa ambos pesos respectivos.
 
 # Representación: Limpieza de datos 
+
 Los manzanos producen una mezcla de frutas excelentes y gusanos. Sin embargo, las manzanas que se muestran en los supermercados refinados son frutas 100% perfectas. Entre el huerto y el supermercado, alguien pasa mucho tiempo quitando las manzanas en mal estado o lanzando un poco de cera sobre las que se pueden recuperar. Como ingeniero de AA, dedicarás una gran cantidad de tu tiempo a desechar ejemplos malos y limpiar los que se pueden recuperar. Incluso unas pocas "manzanas en mal estado" pueden arruinar un gran conjunto de datos.
 
 Ajusta valores de atributos
@@ -147,25 +214,41 @@ Ayuda a evitar la "trampa de NaN", en la que un número del modelo se convierte 
 Permite que el modelo aprenda las ponderaciones correspondientes para cada atributo. Sin el ajuste de atributos, el modelo les prestará demasiada atención a los atributos que tienen un rango más amplio.
 No es necesario que asignes el mismo ajuste de escala a cada atributo de punto flotante. No sucederá nada terrible si el Atributo A se escala de -1 a +1, mientras que el Atributo B se ajusta de -3 a +3. Sin embargo, tu modelo reaccionará mal si el Atributo B se escala de 5,000 a 100,000.
 
-### Manejo de valores atípicos extremos
+***Manejo de valores atípicos extremos***
+
+<br>
+
 El siguiente gráfico representa un atributo llamado roomsPerPerson del conjunto de datos Viviendas de California. El valor de roomsPerPerson se dividió dividiendo la cantidad total de habitaciones en un área por la población en esa área. El gráfico muestra que la gran mayoría de áreas en California tiene una o dos habitaciones por persona. Pero veamos el eje X.
+
+<br>
 
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/ScalingNoticingOutliers.svg?hl=es-419">
 
+<br>
+
 entonces:
+
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/ScalingClipping.svg?hl=es-419">
+
+<br>
 
 El recorte del valor del atributo en 4.0 no significa que ignoremos todos los valores superiores a 4.0. En cambio, significa que todos los valores que eran superiores a 4.0 ahora se convierten en 4.0. Esto explica la elevación extraña en 4.0. A pesar de esa elevación, el conjunto de atributos ajustado ahora es más útil que los datos originales.
 
 <br>
+
 En el conjunto de datos, latitude es un valor de punto flotante. Sin embargo, no tiene sentido representar latitude como un atributo de punto flotante en nuestro modelo. Eso se debe a que no existe una relación lineal entre la latitud y los valores de las viviendas. Por ejemplo, las casas en la latitud 35 no son 
  más costosas (o menos costosas) que las casas en la latitud 34. Sin embargo, las latitudes individuales probablemente son un muy buen predictor de los valores de casas.
 
 Para que la latitud sea un predictor útil, debemos dividir las latitudes en discretizaciones, como se sugiere en la siguiente figura:
 
+<br>
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/ScalingBinningPart2.svg?hl=es-419">
 
 <br>
+
 En lugar de tener un atributo de punto flotante, ahora tenemos 11 atributos booleanos distintos (LatitudeBin1, LatitudeBin2, ..., LatitudeBin11). Tener 11 atributos independientes es algo poco elegante, por lo que hay que unirlos en un solo vector de 11 elementos. Esto nos permitirá representar la latitud 37.4 de la siguiente manera:
 
 `[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]`
@@ -175,9 +258,14 @@ Gracias a la discretización, nuestro modelo ahora puede aprender pesos completa
 
 
 # COMBINACIONES DE ATRIBUTOS
-## Codificación de no linealidad
+***Codificación de no linealidad***
+
+<br>
 
 <img src='https://developers.google.com/machine-learning/crash-course/images/LinearProblem1.png?hl=es-419'>
+
+<br>
+
 ¿Es un problema lineal?
 
 ¿Puedes dibujar una línea que separe los árboles enfermos de los sanos? Claro. Este es un problema lineal. La línea no será perfecta. Uno o dos árboles enfermos pueden estar del lado "sano", pero la línea será un buen predictor.
@@ -213,6 +301,7 @@ Gracias al descenso de gradientes estocástico, los modelos lineales se pueden e
 
 
 # Vectores de una sola combinacion
+
 Hasta ahora, nos hemos enfocado en la combinación de dos atributos de punto flotante individuales. En la práctica, los modelos de aprendizaje automático rara vez abarcan atributos continuos. Sin embargo, los modelos de aprendizaje automático suelen cruzar vectores de atributos one-hot. Piensa en combinaciones de atributos de vectores de un solo 1 como conjunciones lógicas. Por ejemplo, supongamos que tenemos dos atributos: país e idioma. Una codificación one-hot de cada una genera vectores con atributos binarios que pueden interpretarse como country=USA, country=France o language=English, language=Spanish. Luego, si realizas una combinación de atributos de estas codificaciones de un solo 1, obtienes atributos binarios que pueden interpretarse como conjunciones lógicas, como las siguientes:
 
 
@@ -265,18 +354,27 @@ obtendremos una capacidad de predicción mucho mayor que cualquiera de las funci
 Los alumnos lineales se ajustan bien a los datos masivos. Usar combinaciones de atributos en conjuntos de datos masivos es una estrategia eficiente para aprender modelos muy complejos. Las redes neuronales proporcionan otra estrategia
 [Practica!](https://developers.google.com/machine-learning/crash-course/feature-crosses/playground-exercises?hl=es-419)
 
-# Combinaciones de atributos: Ejercicio de programación
+<br>
+
+***Combinaciones de atributos: Ejercicio de programación***
+
+<br>
 
 Haremos un ejuercico muy util, ve al archivo: `rEPRESENTATION_WITH_A_FEATURE_CROSS.ipynb`
 [link](https://developers.google.com/machine-learning/crash-course/feature-crosses/programming-exercise?hl=es-419)
 
-# Combinaciones de atributos: Comprueba tu comprensión
+<br>
+
+***Combinaciones de atributos: Comprueba tu comprensión***
+
+<br>
+
 [Comprueba tu comprensión](https://developers.google.com/machine-learning/crash-course/feature-crosses/check-your-understanding?hl=es-419)
 
 # Regresión logística
 En lugar de predecir exactamente 0 o 1, la regresión logística genera una probabilidad, un valor entre 0 y 1, exclusivo. Por ejemplo, considera un modelo de regresión logística para la detección de spam. Si el modelo infiere un valor de 0.932 en un mensaje de correo electrónico en particular, implica una probabilidad del 93.2% de que el mensaje sea spam. Más precisamente, significa que, en el límite de ejemplos de entrenamiento infinitos, el conjunto de ejemplos para los que el modelo predice 0.932 será realmente spam el 93.2% de las veces, y el 6.8% restante no lo será.
 
-# Regresión logística: calcular una probabilidad 
+***Regresión logística: calcular una probabilidad ***
 Muchos problemas requieren una estimación de probabilidad como resultado. La regresión logística es un mecanismo extremadamente eficiente para calcular las probabilidades. En términos prácticos, puedes usar la probabilidad que se muestra de cualquiera de las siguientes dos maneras:
 
 "Tal como está"
@@ -306,14 +404,23 @@ Si `z` representa el resultado de la capa lineal de un modelo entrenado con regr
 
 # Clasificacion
 
-## Clasificación: Umbral 
+<br>
+
+***Clasificación: Umbral ***
+
+<br>
+
 La regresión logística muestra una probabilidad. Puedes usar la probabilidad de que se muestre “tal como está” (por ejemplo, la probabilidad de que el usuario haga clic en este anuncio es 0.00023) o la convierte en un valor binario (por ejemplo, este correo electrónico es spam).
 
 Un modelo de regresión logística que muestra 0.9995 para un mensaje de correo electrónico en particular predice que es muy probable que sea spam. Por el contrario, otro mensaje de correo electrónico con una puntuación de predicción de 0.0003 en el mismo modelo de regresión logística es muy probable que no sea spam. Sin embargo, ¿qué ocurre con un mensaje de correo electrónico con una puntuación de predicción de 0.6? Para asignar un valor de regresión logística a una categoría binaria, debes definir un umbral de clasificación (también llamado umbral de decisión). Un valor por encima de ese umbral indica "spam" un valor por debajo indica "no spam" Es tentador suponer que el umbral de clasificación siempre debe ser 0.5, pero los umbrales dependen del problema y, por lo tanto, son valores que debes ajustar.
 
 En las siguientes secciones, se analizan con más detalle las métricas que puedes usar para evaluar las predicciones de un modelo de clasificación, así como el impacto del cambio del umbral de clasificación en estas predicciones.
 
-## Clasificación: Verdadero o falso y positivo o negativo
+<br>
+
+***Clasificación: Verdadero o falso y positivo o negativo***
+
+<br>
 
 En esta sección, definiremos los componentes básicos de las métricas que usaremos para evaluar los modelos de clasificación. Pero primero, una fábula:
 
@@ -343,14 +450,19 @@ Un falso positivo es un resultado en el que el modelo predice de manera incorrec
 En las siguientes secciones, veremos cómo evaluar los modelos de clasificación mediante métricas derivadas de estos cuatro resultados.
 
 # Clasificación: Precisión y recuperación
+
 La precisión intenta responder a la siguiente pregunta:
 
 `¿Qué proporción de identificaciones positivas fue correcta?`
 
 [informacion](https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=es-419)
 
+<br>
 
-### Precisión y recuperación: una lucha incesante
+***Precisión y recuperación: una lucha incesante***
+
+<br>
+
 Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y la recuperación. Lamentablemente, la precisión y la recuperación suelen ser tensas. Es decir, la mejora de la precisión suele reducir la recuperación, y viceversa. Para explorar esta noción, observa la siguiente figura, que muestra 30 predicciones realizadas por un modelo de clasificación de correo electrónico. Las que se encuentran a la derecha del umbral de clasificación se clasifican como "spam", mientras que las de la izquierda se clasifican como "no es spam".
 
 [practica](https://developers.google.com/machine-learning/crash-course/classification/check-your-understanding-accuracy-precision-recall?hl=es-419)
@@ -359,13 +471,23 @@ Para evaluar completamente la efectividad de un modelo, debes examinar la precis
 # Clasificación: Curva ROC y AUC
 [texto](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es-419)
 
-## ROC curve
+<br>
+
+***ROC curve***
+
+<br>
+
 Una curva ROC representa TPR frente a FPR en diferentes umbrales de clasificación. Al disminuir el umbral de clasificación, se clasifican más elementos como positivos, lo que aumenta tanto los falsos positivos como los verdaderos positivos. En la siguiente figura, se muestra una curva ROC típica.
 
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/ROCCurve.svg?hl=es-419">
 Para calcular los puntos en una curva ROC, podríamos evaluar un modelo de regresión logística muchas veces con diferentes umbrales de clasificación, pero esto sería ineficiente. Afortunadamente, existe un algoritmo eficaz y basado en ordenamiento que puede proporcionarnos esta información, llamada AUC.
 
-## AUC: Área bajo la curva ROC
+<br>
+
+***AUC: Área bajo la curva ROC***
+
+<br>
+
 AUC significa "área bajo la curva ROC". Es decir, el AUC mide el área bidimensional completa debajo de la curva ROC completa (piensa en un cálculo integral) de (0,0) a (1,1).
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/AUC.svg?hl=es-419">
 El AUC proporciona una medida agregada del rendimiento en todos los umbrales de clasificación posibles. Una forma de interpretar el AUC es como la probabilidad de que el modelo clasifique un ejemplo positivo aleatorio más alto que un ejemplo negativo aleatorio. Por ejemplo, en los siguientes ejemplos, que se ordenan de izquierda a derecha en orden ascendente con respecto a las predicciones de regresión logística:
@@ -445,7 +567,12 @@ El archivo se llama: Binary_Classification
 
 # Regularización para lograr dispersión
 
+<br>
+
 ***Regularización para lograr dispersión: Regularización L1***
+
+<br>
+
 Los vectores dispersos a menudo contienen muchas dimensiones. Cuando se crea una combinación de atributos, se generan incluso más dimensiones. Dados estos vectores de atributos de dimensiones altas, el tamaño del modelo puede aumentar enormemente y requerir grandes cantidades de RAM.
 
 En un vector disperso de dimensiones altas, sería bueno motivar a los pesos a que se reduzcan exactamente a 0 siempre que sea posible. Un peso de exactamente 0 básicamente quita el atributo correspondiente del modelo. Cuando se extraen atributos, se ahorrará RAM y es posible que se reduzca el ruido en el modelo.
@@ -478,7 +605,11 @@ La regularización L1, al penalizar el valor absoluto de todos los pesos, es muy
 Ten en cuenta que esta descripción es verdadera para un modelo unidimensional.
 [ver](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/l1-regularization?hl=es-419)
 
+<br>
+
 ***Regularización para lograr dispersión: Ejercicio de Playground***
+
+<br>
 
 *Examen de la regularización L1*
 Este ejercicio contiene un conjunto de datos de entrenamiento pequeño y un poco ruidoso. En este tipo de escenario, el sobreajuste es un problema real. La regularización podría ayudar, pero ¿qué forma de regularización?
@@ -491,7 +622,12 @@ Este ejercicio consta de cinco tareas relacionadas. Para simplificar las compara
 En definitiva l1 es mas util a la hora de hacer un modelo menos pesado
 
 # Redes neuronales: Estructura
+
+<br>
+
 ***Redes neuronales: Estructura***
+
+<br>
 
 Si recuerdas la unidad [Combinaciones](https://developers.google.com/machine-learning/crash-course/feature-crosses/video-lecture?hl=es-419) de atributos, el siguiente problema de clasificación no es lineal:
 <img src="https://developers.google.com/machine-learning/crash-course/images/FeatureCrosses1.png?hl=es-419">
@@ -512,6 +648,9 @@ Cada círculo azul representa un atributo de entrada, y el círculo verde repres
 ¿Cómo podemos modificar este modelo para mejorar su capacidad de abordar problemas no lineales?
 
 *Capas ocultas*
+
+<br>
+
 En el modelo que se muestra en el siguiente gráfico, agregamos una capa oculta de valores intermedios. Cada nodo amarillo en la capa oculta es una suma ponderada de los valores del nodo de entrada azul. El resultado es una suma ponderada de los nodos amarillos.
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/1hidden.svg?hl=es-419">
 
@@ -523,6 +662,7 @@ En el modelo que se muestra en el siguiente gráfico, agregamos una segunda capa
 ¿Este modelo es lineal? Sí, lo es. Cuando expresas el resultado como una función de la entrada y lo simplificas, obtienes otra suma ponderada de las entradas. Esta suma no modelará el problema no lineal de la Figura 2.
 
 *Funciones de activación*
+<br>
 Para modelar un problema no lineal, podemos introducir directamente una no linealidad. Podemos canalizar cada nodo de capa oculta a través de una función no lineal.
 
 En el modelo que se muestra en el siguiente grafo, una función no lineal transforma el valor de cada nodo en la capa 1 oculta antes de pasar a las sumas ponderadas de la siguiente capa. Esta función no lineal se denomina función de activación.
@@ -536,7 +676,9 @@ Ahora que hemos agregado una función de activación, agregar capas tiene más i
 La siguiente función de activación sigmoidea convierte la suma ponderada en un valor entre 0 y 1.
 
 f(x) = 1/1+e ^(-x)
+
 Graficado:
+
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/sigmoid.svg?hl=es-419">
 La siguiente función de activación de unidad lineal rectificada (o ReLU, por sus siglas en inglés) a menudo funciona mejor que una función suave, como la sigmoide, y es mucho más fácil de calcular.
 
@@ -551,7 +693,12 @@ De hecho, cualquier función matemática puede servir como función de activaci�
 
 TensorFlow proporciona compatibilidad [lista para usar en muchas funciones de activación](https://www.tensorflow.org/api_docs/python/tf/nn). Puedes encontrar estas funciones de activación en la lista de wrappers para operaciones de redes neuronales básicas de TensorFlow. Sin embargo, recomendamos comenzar con ReLU.
 
+<br>
+
 **resumen**
+
+<br>
+
 Ahora, nuestro modelo tiene todos los componentes estándar de lo que las personas generalmente significan cuando dicen &red neuronal:
 
 Un conjunto de nodos, análogos a las neuronas, organizados en capas.
@@ -559,12 +706,20 @@ Un conjunto de pesos que representan las conexiones entre cada capa de la red ne
 Un conjunto de sesgos, uno para cada nodo.
 Una función de activación que transforma el resultado de cada nodo en una capa. Las diferentes capas pueden tener diferentes funciones de activación.
 
+<br>
+
 ***Redes neuronales: Ejercicios de Playground***
+
+<br>
 
 [ejercicio](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/playground-exercises?hl=es-419 )
 
+<br>
 
 *ejercicio de codigo*
+
+<br>
+
 [click para ejercucui](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/programming-exercise?hl=es-419)
 <br>
 El nombre del archivo es Intro_to_Neural_Nets.ipynb
