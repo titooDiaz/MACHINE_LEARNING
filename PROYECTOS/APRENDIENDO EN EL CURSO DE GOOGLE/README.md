@@ -4,6 +4,11 @@
 
 # CURSO DE APRENDIZAJE AUTOMATICO HECHO POR GOOGLE
 
+> [!CAUTION]
+> Toda esta informacion fue sacada del curso de google
+> si deseas mas informacion
+> puedes abrir el siguiente [link](https://developers.google.com/machine-learning/crash-course/ml-intro?hl=es-419)
+
 ## Tabla de contenido:
 1. [Introducción](#introduction) [👻](https://developers.google.com/machine-learning/crash-course/ml-intro?hl=es-419)
 2. [Generalizacion](#generalizacion) [👻](https://developers.google.com/machine-learning/crash-course/generalization/video-lecture?hl=es-419)
@@ -14,8 +19,8 @@
 7. [Clasificacion](#clasificaion) [👻](https://developers.google.com/machine-learning/crash-course/classification/video-lecture?hl=es-419)
 8. [Regularizacion](#regularizacion) [👻](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/video-lecture?hl=es-419)
 9. [Redes neuronales](#redesneuronales) [👻](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture?hl=es-419)
-10. [](#) [👻]()
-11. [](#) [👻]()
+10. [Entrenamiento de redes neuronales](#entrenamiento) [👻](https://developers.google.com/machine-learning/crash-course/training-neural-networks/video-lecture?hl=es-419)
+11. [Redes neuronales de clases múltiples](#multiples) [👻](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/video-lecture?hl=es-419)
 12. [](#) [👻]()
 
 ## Introduccion: <p id="introduction">
@@ -734,3 +739,80 @@ Una función de activación que transforma el resultado de cada nodo en una capa
 [click para codigo](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/programming-exercise?hl=es-419)
 <br>
 El nombre del archivo es Intro_to_Neural_Nets.ipynb
+
+# Entrenamiento de las redes neuronales <p id="entrenamiento">
+
+En esta sección, se explican los casos de falla de la propagación inversa y la forma más común de regularizar una red neuronal.
+
+<br>
+
+***Casos de falla***
+
+<br>
+
+Existen varias formas comunes en las que la propagación inversa puede fallar.
+
+<br>
+
+***Desaparición de gradientes***
+
+<br>
+
+Los gradientes para las capas inferiores (más cerca de la entrada) pueden volverse muy pequeños. En las redes profundas, el cálculo de estos gradientes puede implicar tomar el producto de muchos términos pequeños.
+
+Cuando los gradientes desaparecen hacia el 0 en las capas más bajas, estas capas se entrenan muy lentamente o no se entrenan en absoluto.
+
+La función de activación ReLU puede ayudar a evitar que los gradientes desaparezcan.
+
+<br>
+
+***Degradados con alto crecimiento***
+
+<br>
+
+Si las ponderaciones en una red son muy grandes, los gradientes de las capas inferiores implican productos de muchos términos grandes. En este caso, los gradientes pueden crecer demasiado; gradientes que se vuelven demasiado grandes como para la convergencia.
+
+La normalización por lotes puede ayudar a evitar el crecimiento de gradientes y la reducción de la tasa de aprendizaje.
+
+
+<br>
+
+***Unidades ReLU inactivas***
+
+<br>
+
+Una vez que la suma ponderada de una unidad ReLU cae por debajo de 0, la unidad ReLU puede bloquearse. Da como resultado una activación de 0, lo que no contribuye en nada al resultado de la red, y los gradientes ya no pueden fluir por ella durante la propagación inversa. Con una fuente de gradientes cortada, es posible que la entrada a la ReLU nunca cambie lo suficiente como para que la suma ponderada vuelva a ser superior a 0.
+
+Reducir la tasa de aprendizaje puede ayudar a evitar que las unidades ReLU queden inactivas.
+
+<br>
+
+***Regularización de jubilados***
+
+<br>
+
+La regularización de jubilados es otra forma de regularización que resulta útil para las redes neuronales. Funciona al "extraer" activaciones de unidades de forma aleatoria en una red para un solo paso de gradiente. Mientras más extraigas, mejor será la regularización:
+
+0.0 = Sin regularización de jubilados.
+1.0 = Se retira todo. El modelo no aprende nada.
+Los valores entre 0.0 y 1.0 son más útiles.
+
+
+# Redes neuronales de clases múltiples <p id="multiples">
+Anteriormente, encontraste modelos de clasificación binaria que podían elegir una de dos opciones posibles, por ejemplo:
+
+Un correo electrónico determinado es spam o no es spam.
+Un tumor dado es maligno o benigno.
+En este módulo, investigaremos la clasificación multiclase , que puede elegir entre varias posibilidades. Por ejemplo:
+
+¿Este perro es un beagle, un basset hound o un sabueso?
+¿Esta flor es una iris sibirica, holandesa, con bandera azul o con barba enana?
+¿Ese avión es un Boeing 747, un Airbus 320, un Boeing 777 o un Embraer 190?
+¿Esta es la imagen de una manzana, un oso, una golosina, un perro o un huevo?
+Algunos problemas de clases Múltiples del mundo real implican elegir entre millones de clases separadas. Por ejemplo, considere un modelo de clasificación de clases múltiples que pueda identificar la imagen de casi cualquier cosa.
+
+<br>
+
+***Redes neuronales de clases múltiples: una frente a todas***
+
+<br>
