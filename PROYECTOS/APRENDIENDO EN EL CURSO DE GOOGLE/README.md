@@ -731,6 +731,6 @@ Una función de activación que transforma el resultado de cada nodo en una capa
 
 <br>
 
-[click para ejercucui](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/programming-exercise?hl=es-419)
+[click para codigo](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/programming-exercise?hl=es-419)
 <br>
 El nombre del archivo es Intro_to_Neural_Nets.ipynb
