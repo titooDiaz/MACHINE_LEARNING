@@ -874,4 +874,14 @@ Muestreo de candidatos significa que softmax calcula una probabilidad para todas
 
 El softmax completo es bastante económico cuando la cantidad de clases es pequeña, pero se vuelve demasiado costoso cuando aumenta la cantidad de clases. El muestreo de candidatos puede mejorar la eficiencia en problemas que tienen una gran cantidad de clases.
 
+<br>
 
+***Una etiqueta frente a muchas etiquetas***
+
+<br>
+
+Softmax supone que cada ejemplo es miembro de exactamente una clase. Sin embargo, algunos ejemplos pueden ser miembros de varias clases al mismo tiempo. Para estos ejemplos:
+
+No puedes usar softmax.
+Debes confiar en varias regresiones logísticas.
+Por ejemplo, supongamos que tus ejemplos son imágenes que contienen exactamente un elemento: una fruta. Softmax puede determinar la probabilidad de que un elemento sea una pera, una naranja, una manzana, etc. Si tus ejemplos son imágenes que contienen todo tipo de cosas (tazones de diferentes tipos de frutas), entonces deberás usar varias regresiones logísticas.
