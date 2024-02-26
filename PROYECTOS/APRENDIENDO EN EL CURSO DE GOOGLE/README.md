@@ -860,3 +860,18 @@ softmax se implementa a través de una capa de red neuronal justo antes de la ca
 <img src="https://developers.google.com/static/machine-learning/crash-course/images/SoftmaxLayer.svg?hl=es-419">
 [ecuacion de softmax](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax?hl=es-419#expandable-1)
 
+<br>
+
+***Opciones de softmax***
+
+<br>
+
+Considera las siguientes variantes de softmax:
+
+Softmax completo es el softmax del que estuvimos hablando: calcula una probabilidad para cada clase posible.
+
+Muestreo de candidatos significa que softmax calcula una probabilidad para todas las etiquetas positivas, pero solo para una muestra aleatoria de etiquetas negativas. Por ejemplo, si nos interesa determinar si una imagen de entrada es un beagle o un sabueso, no tenemos que proporcionar probabilidades para cada ejemplo que no sea un perro.
+
+El softmax completo es bastante económico cuando la cantidad de clases es pequeña, pero se vuelve demasiado costoso cuando aumenta la cantidad de clases. El muestreo de candidatos puede mejorar la eficiencia en problemas que tienen una gran cantidad de clases.
+
+
