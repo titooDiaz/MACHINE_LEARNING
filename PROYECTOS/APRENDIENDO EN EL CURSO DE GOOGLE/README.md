@@ -882,6 +882,7 @@ El softmax completo es bastante económico cuando la cantidad de clases es peque
 
 Softmax supone que cada ejemplo es miembro de exactamente una clase. Sin embargo, algunos ejemplos pueden ser miembros de varias clases al mismo tiempo. Para estos ejemplos:
 
-No puedes usar softmax.
-Debes confiar en varias regresiones logísticas.
+  - No puedes usar softmax.
+  - Debes confiar en varias regresiones logísticas.
+  
 Por ejemplo, supongamos que tus ejemplos son imágenes que contienen exactamente un elemento: una fruta. Softmax puede determinar la probabilidad de que un elemento sea una pera, una naranja, una manzana, etc. Si tus ejemplos son imágenes que contienen todo tipo de cosas (tazones de diferentes tipos de frutas), entonces deberás usar varias regresiones logísticas.
