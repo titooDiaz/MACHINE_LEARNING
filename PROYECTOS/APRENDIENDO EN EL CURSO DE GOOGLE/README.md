@@ -816,3 +816,47 @@ Algunos problemas de clases Múltiples del mundo real implican elegir entre mill
 ***Redes neuronales de clases múltiples: una frente a todas***
 
 <br>
+
+Uno frente a todos proporciona una forma de aprovechar la clasificación binaria. Dado un problema de clasificación con `n` soluciones posibles, una solución de uno frente a todos consiste en `n` clasificadores binarios independientes, es decir, un clasificador binario para cada resultado posible. Durante el entrenamiento, el modelo se ejecuta a través de una secuencia de clasificadores binarios, entrenando cada uno para responder una pregunta de clasificación independiente. Por ejemplo, en una foto de un perro, se podrían entrenar cinco reconocedores diferentes, cuatro que vean la imagen como un ejemplo negativo (no una manzana, no un oso, etc.) y otra que vea la imagen como un ejemplo positivo (un perro). Es decir:
+
+¿Esta imagen es de una manzana? N°
+¿Esta imagen es de un oso? N°
+¿Esta imagen es de una golosina? N°
+¿Esta imagen es de un perro? Sí.
+¿Esta imagen es de un huevo? N°
+Este enfoque es bastante razonable cuando la cantidad total de clases es pequeña, pero se vuelve cada vez más ineficiente a medida que aumenta la cantidad de clases.
+
+Podemos crear un modelo de uno frente a todos significativamente más eficiente con una red neuronal profunda en la que cada nodo de salida represente una clase diferente. En la siguiente figura, se sugiere este enfoque:
+
+<br>
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/OneVsAll.svg?hl=es-419">
+<br>
+
+
+<br>
+
+***Redes neuronales de clases múltiples: softmax***
+
+<br>
+
+Recuerda que la regresión logística genera un decimal entre 0 y 1.0. Por ejemplo, un resultado de regresión logística de 0.8 de un clasificador de correo electrónico sugiere un 80% de probabilidades de que un correo electrónico sea spam y un 20% de probabilidades de que no sea spam. Claramente, la suma de las probabilidades de que un correo electrónico sea spam o no es 1.0.
+
+Softmax lleva esta idea al mundo de las clases múltiples. Es decir, softmax asigna probabilidades decimales a cada clase en un problema de clases múltiples. Esas probabilidades decimales deben sumar 1.0. Esta restricción adicional ayuda a que el entrenamiento converja más rápido de lo contrario.
+
+Por ejemplo, si volvemos al análisis de imágenes que vimos en la Figura 1, softmax podría producir las siguientes probabilidades de una imagen que pertenezca a una clase en particular:
+
+Clase	| Probabilidad
+apple |	0.001
+oso	  | 0.04
+dulce |	0.008
+dog   |	0.95
+huevo |	0.001
+
+softmax se implementa a través de una capa de red neuronal justo antes de la capa de salida. La capa de softmax debe tener la misma cantidad de nodos que la capa de salida.
+
+<br>
+
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/SoftmaxLayer.svg?hl=es-419">
+[ecuacion de softmax](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax?hl=es-419#expandable-1)
+
