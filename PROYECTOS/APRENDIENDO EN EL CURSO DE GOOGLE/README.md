@@ -886,3 +886,16 @@ Softmax supone que cada ejemplo es miembro de exactamente una clase. Sin embargo
   - Debes confiar en varias regresiones logísticas.
   
 Por ejemplo, supongamos que tus ejemplos son imágenes que contienen exactamente un elemento: una fruta. Softmax puede determinar la probabilidad de que un elemento sea una pera, una naranja, una manzana, etc. Si tus ejemplos son imágenes que contienen todo tipo de cosas (tazones de diferentes tipos de frutas), entonces deberás usar varias regresiones logísticas.
+
+
+<br>
+
+***Redes neuronales de clases múltiples: Ejercicio de programación***
+
+<br>
+
+[ver](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/programming-exercise?hl=es-419)
+
+Tambien peudes encontrar el archivo como:
+
+`Multi_class_classification_with_MNIST.ipynb`
