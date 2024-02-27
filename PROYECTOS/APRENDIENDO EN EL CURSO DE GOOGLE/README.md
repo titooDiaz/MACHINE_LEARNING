@@ -21,7 +21,7 @@
 9. [Redes neuronales](#redesneuronales) [👻](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture?hl=es-419)
 10. [Entrenamiento de redes neuronales](#entrenamiento) [👻](https://developers.google.com/machine-learning/crash-course/training-neural-networks/video-lecture?hl=es-419)
 11. [Redes neuronales de clases múltiples](#multiples) [👻](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/video-lecture?hl=es-419)
-12. [](#) [👻]()
+12. [Incorporaciones](#incorporaciones) [👻](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture?hl=es-419)
 
 ## Introduccion: <p id="introduction">
 Este es un curso hecho por google, donde nos ofrece una amplia informacion para informarnos sobre `Tensorflow` su biblioteca de aprendizaje automatico
@@ -899,3 +899,141 @@ Por ejemplo, supongamos que tus ejemplos son imágenes que contienen exactamente
 Tambien peudes encontrar el archivo como:
 
 `Multi_class_classification_with_MNIST.ipynb`
+
+<br>
+
+# Incorporaciones <p id="incorporaciones">
+
+<br>
+
+***Incorporaciones: Motivación del filtrado colaborativo***
+
+<br>
+
+El filtrado colaborativo es la tarea de realizar predicciones sobre los intereses de un usuario en función de los intereses de muchos otros usuarios. A modo de ejemplo, veamos la tarea de las recomendaciones de películas. Supongamos que tenemos 500,000 usuarios y una lista de las películas que miró cada usuario (de un catálogo de 1,000,000 películas). Nuestro objetivo es recomendar películas a los usuarios.
+
+Para resolver este problema, se necesita un método que determine qué películas son similares entre sí. Para lograr este objetivo, incorporamos las películas a un espacio de dimensiones bajas creado de manera tal que las películas similares estén cerca.
+
+Antes de describir cómo podemos aprender la incorporación, primero exploramos el tipo de cualidades que queremos que tenga la incorporación y cómo representaremos los datos de entrenamiento para aprender la incorporación.
+
+Disposición de las películas sobre una línea de números de una dimensión
+Para desarrollar la intuición sobre las incorporaciones, en un papel, intenta organizar las siguientes películas en una línea numérica unidimensional, de modo que las películas que estén más cerca entre sí sean las más cercanas:
+
+| Película                           | Calificación | Descripción                                                                                                         |
+|-------------------------------------|--------------|-----------------------------------------------------------------------------------------------------------------------|
+| Bléu                                | (der.)       | Una viuda francesa lamenta la pérdida de su esposo y su hija después de que fallecen en un accidente de auto.         |
+| El caballero de la noche asciende   | PG-13        | Batman intenta salvar a Gotham City de una destrucción nuclear en esta secuela de El caballero de la noche, basada en el universo de DC Comics. |
+| Harry Potter y la piedra filosofal  | PG           | Un niño huérfano descubre que es un mago y se inscribe en la Hogwarts School of Witchcraft and Wizardry, donde emprende su primera batalla contra el malvado Lord Voldemort. |
+| Los increíbles                      | PG           | Una familia de superhéroes forzadas a vivir como civiles en los suburbios se retiró para salvar la carrera de superhéroes de Syndrome y su robot asesino. |
+| Shrek                               | PG           | Un adorable ogro y su burro escolta emprenden una misión para rescatar a la princesa Fiona, que está encarcelada en un castillo por un dragón. |
+| Star Wars                           | PG           | Luke Skywalker y Han Solo se unen a dos androides para rescatar a la princesa Leia y salvar la galaxia.                |
+| Las trillizas de Belleville         | PG-13        | Cuando secuestran al ciclista profesional Champion durante el Tour de Francia, su abuela y su perro con sobrepeso viajan para rescatarlo, con la ayuda de un trío de cantantes de jazz. |
+| Memento                             | (der.)       | Un hombre con amnesia busca desesperadamente resolver el asesinato de su esposa; por su falta de memoria, se tatúa las pistas en su cuerpo. |
+
+
+<br>
+
+
+*solucion posible*
+<img src="https://developers.google.com/machine-learning/crash-course/images/Embedding2dWithLabels.svg?hl=es-419">
+Con esta incorporación de dos dimensiones, definimos una distancia entre las películas de manera tal que las películas estén cerca (y por lo tanto se infiera que son similares) si tienen similitud en cuanto al nivel de orientación hacia los niños o los adultos, y en cuanto a si son películas taquilleras o independientes. Desde luego, estas son solo dos de las tantas características que podrían ser importantes de las películas.
+
+En términos más generales, lo que hicimos es asignar estas películas a un espacio de incorporación, en el que cada palabra se describe mediante un conjunto de coordenadas en dos dimensiones. Por ejemplo, en este espacio, "Shrek" se asigna a (-1.0, 0.95) y "Bleu" se asigna a (0.65, -0.2). En general, al aprender una incorporación de d dimensiones, cada película se representa con d números de valores reales y cada uno de ellos proporciona la coordenada en cada dimensión.
+
+En este ejemplo, le asignamos un nombre a cada dimensión. Cuando se aprenden incorporaciones, las dimensiones individuales no se aprenden con nombres. A veces, podemos observar las incorporaciones y asignar significados semánticos a las dimensiones, pero en otras no podemos. A menudo, cada dimensión se denomina dimensión latente, ya que representa un atributo que no es explícito en los datos, sino que se deduce de ellos.
+
+En última instancia, las distancias entre las películas en el espacio de incorporación son significativas, en lugar de los valores de una sola película en cualquier dimensión determinada.
+
+
+<br>
+
+***Incorporaciones: Datos de entrada categóricos ***
+
+<br>
+
+Los datos categóricos hacen referencia a atributos de entrada que representan uno o más elementos discretos de un conjunto de opciones finito. Por ejemplo, puede ser el conjunto de películas que miró un usuario, el conjunto de palabras de un documento o la ocupación de una persona.
+
+Los datos categóricos se representan de manera más eficiente a través de tensores dispersos, que son tensores con muy pocos elementos distintos de cero. Por ejemplo, si compilamos un modelo de recomendación de películas, podemos asignar un ID único a cada película posible y, luego, representar a cada usuario mediante un tensor disperso de las películas que miraron, como se muestra en la figura 3.
+(esta)
+<img src="https://developers.google.com/machine-learning/crash-course/images/InputRepresentationWithValues.png?hl=es-419">
+Cada fila de la matriz en la figura 3 es un ejemplo que captura el historial de visualización de una película de un usuario y se representa como un tensor disperso porque cada usuario solo mira una pequeña fracción de todas las películas posibles. La última fila corresponde al tensor disperso [1, 3, 999999], con los índices de vocabulario que se muestran sobre los íconos de películas.
+
+Del mismo modo, se pueden representar palabras, oraciones y documentos como vectores dispersos en los que cada palabra del vocabulario cumple una función similar a las películas de nuestro ejemplo de recomendación.
+
+Para usar esas representaciones dentro de un sistema de aprendizaje automático, necesitamos una forma de representar cada vector disperso como un vector de números, de manera que los elementos con similitudes semánticas (películas o palabras) tengan distancias similares en el espacio vectorial. Pero ¿cómo se representa una palabra como un vector de números?
+
+La forma más sencilla es definir una capa de entrada gigante con un nodo para cada palabra de tu vocabulario, o al menos un nodo para cada palabra que aparece en tus datos. Si aparecen 500,000 palabras únicas en tus datos, podrías representar una palabra con un vector de 500,000 longitudes y asignar cada palabra a un espacio en el vector.
+
+Si asignas "caballo" al índice 1247, para alimentar "caballo" a tu red, puedes copiar un 1 en el nodo de entrada número 1247 y un 0 en el resto. Este tipo de representación se denomina codificación one-hot porque solo un índice tiene un valor distinto de cero.
+
+Por lo general, tu vector puede contener recuentos de palabras en un fragmento de texto más grande. Esto se conoce como una "bolsa de representación" de palabras. En un vector de un grupo de palabras, varios de los 500,000 nodos tendrían un valor distinto de cero.
+
+Sin embargo, aunque determines los valores distintos de cero, un nodo por palabra proporciona vectores de entrada muy dispersos, es decir, vectores muy grandes con relativamente pocos valores distintos de cero. Las representaciones dispersas tienen algunos problemas que pueden dificultar el aprendizaje eficaz de un modelo.
+
+*Tamaño de la red*
+Los vectores de entrada de gran tamaño significan una enorme cantidad de pesos para una red neuronal. Si hay M palabras en tu vocabulario y N nodos en la primera capa de la red sobre la entrada, tienes MxN ponderaciones para entrenar para esa capa. Una gran cantidad de pesos causa otros problemas:
+
+  - Cantidad de datos. Cuantos más pesos tenga el modelo, más datos necesitarás para entrenar de manera eficaz.
+
+  - Cantidad de cómputo. Cuantos más pesos tenga, más procesamiento se necesitará para entrenar y usar el modelo. Es fácil superar las capacidades de tu hardware.
+
+*Falta de relaciones significativas entre los vectores*
+Si alimentas los valores de píxeles de los canales RGB en un clasificador de imágenes, tiene sentido hablar sobre valores “&close” El azul rojizo está cerca del azul puro, tanto a nivel semántico como en cuanto a la distancia geométrica entre los vectores. Pero un vector con un 1 en el índice 1247 para "caballo" no está más cerca de un vector con un 1 en el índice 50,430 para un "antelope" que para un vector con un 1 en el índice 238 para "televisión".
+
+*La solución: incorporaciones*
+La solución a estos problemas es usar incorporaciones, que traducen vectores dispersos de gran tamaño en un espacio de dimensiones bajas que preserva las relaciones semánticas. En las siguientes secciones de este módulo, exploraremos las incorporaciones de manera intuitiva, conceptual y programática.
+
+<br>
+
+***Incorporaciones: Traslado a un espacio de dimensiones bajas***
+
+<br>
+
+Puedes resolver los problemas principales de los datos de entrada dispersos mediante la asignación de tus datos de alta dimensión en un espacio de dimensiones más bajas.
+
+Como viste en los ejercicios de las películas antes, incluso un espacio pequeño de varias dimensiones proporciona la libertad de agrupar elementos semánticamente similares y mantenerlos separados. La posición (distancia y dirección) en el espacio vectorial pueden codificar la semántica en una buena incorporación. Por ejemplo, las siguientes visualizaciones de incorporaciones reales muestran relaciones geométricas que capturan relaciones semánticas como la relación entre un país y su capital:
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/linear-relationships.svg?hl=es-419">
+
+Este tipo de espacios significativos le da a tu sistema de aprendizaje automático la oportunidad de detectar patrones que pueden ayudar con la tarea de aprendizaje.
+
+Reducir la red
+Si bien queremos contar con suficientes dimensiones para codificar relaciones semánticas enriquecidas, también queremos un espacio de incorporación que sea lo suficientemente pequeño como para permitirnos entrenar nuestro sistema más rápido. Una incorporación útil puede estar en el orden de cientos de dimensiones. Es probable que esto sea varios órdenes de magnitud más pequeños que el tamaño de tu vocabulario para una tarea de lenguaje natural.
+
+<br>
+
+***Incorporaciones: Cómo obtener incorporaciones***
+
+<br>
+
+*Técnicas de reducción de dimensionalidad estándar*
+Existen muchas técnicas matemáticas para capturar la estructura importante de un espacio de dimensiones altas en un espacio de dimensiones bajas. En teoría, cualquiera de estas técnicas se podría usar a fin de crear una incorporación para un sistema de aprendizaje automático.
+
+Por ejemplo, el análisis de componentes principales (PCA) se usó para crear incorporaciones de palabras. Dado un conjunto de instancias, como vectores de grupos de palabras, el PCA intenta encontrar dimensiones altamente correlacionadas que se pueden contraer en una sola dimensión.
+
+*Word2vec*
+Word2vec es un algoritmo que se inventó en Google para entrenar incorporaciones de palabras. Word2vec se basa en la hipótesis distribucional para asignar palabras con similitudes semánticas a vectores de incorporaciones geométricamente cercanas.
+
+La hipótesis distribucional establece que las palabras que suelen tener las mismas palabras adyacentes tienden a ser semánticamente similares. Tanto "perro" como "gato" suelen aparecer cerca de la palabra "veterinario" y este hecho refleja su similitud semántica. Como dijo el lingüista John Firth en 1957, "Sabrás una palabra por la empresa a la que guarda".
+
+Word2Vec explota la información contextual de esta manera mediante el entrenamiento de una red neuronal para que distinga grupos de palabras coexistentes de palabras agrupadas al azar. La capa de entrada toma una representación dispersa de una palabra objetivo junto con una o más palabras contextuales. Esta entrada se conecta a una sola capa oculta más pequeña.
+
+En una versión del algoritmo, el sistema crea un ejemplo negativo y sustituye una palabra de ruido al azar por la palabra objetivo. Dado el ejemplo positivo (el avión vuela), el sistema podría intercambiarse para trotar y crear el ejemplo negativo contrastante (el trote vuela).
+
+La otra versión del algoritmo crea ejemplos negativos al sincronizar la palabra objetivo verdadera con las palabras contextuales seleccionadas al azar. Por lo tanto, puede tomar los ejemplos positivos (el, avión), (vuela, avión) y los ejemplos negativos (compilado, avión), (quién, avión) y aprender a identificar qué pares realmente aparecieron juntos en el texto.
+
+Sin embargo, el clasificador no es el objetivo real para ninguna versión del sistema. Una vez que se haya entrenado el modelo, tendrás una incorporación. Puedes usar los pesos que conectan la capa de entrada con la capa oculta para asignar representaciones dispersas de palabras a vectores más pequeños. Esta incorporación se puede volver a usar en otros clasificadores.
+
+Para obtener más información acerca de word2vec, consulta el instructivo en [tensorflow.org](https://www.tensorflow.org/text/tutorials/word2vec)
+
+*Entrenar una incorporación como parte de un modelo más grande*
+También puedes aprender una incorporación como parte de la red neuronal para tu tarea objetivo. Este enfoque te brinda una incorporación bien personalizada para tu sistema en particular, pero puede tomar más tiempo que entrenar la incorporación por separado.
+
+En general, cuando tienes datos dispersos (o datos densos que quisieras incorporar), puedes crear una unidad de incorporación que sea solo un tipo especial de unidad oculta de tamaño d. Esta capa de incorporación se puede combinar con cualquier otra característica y capa oculta. Al igual que en cualquier DNN, la capa final será la pérdida que se optimiza. Por ejemplo, supongamos que estamos realizando filtros colaborativos, en los que el objetivo es predecir los intereses de un usuario a partir de los de otros usuarios. Podemos modelar esto como un problema de aprendizaje supervisado al apartar (o retener) al azar una pequeña cantidad de las películas que el usuario miró como etiquetas positivas y, luego, optimizar una pérdida de softmax.
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/EmbeddingExample3-1.svg?hl=es-419">
+
+Como otro ejemplo, si quieres crear una capa de incorporación para las palabras de un anuncio de bienes raíces como parte de una DNN a fin de predecir los precios de viviendas, optimizarías una pérdida L2 con el precio de venta conocido de las casas en tus datos de entrenamiento como la etiqueta.
+
+Cuando se aprende una incorporación de d dimensiones, cada elemento se asigna a un punto en un espacio de d dimensiones para que los elementos similares estén cerca en este espacio. En la figura 6, se ilustra la relación entre los pesos aprendidos en la capa de incorporación y la vista geométrica. Las ponderaciones de las conexiones entre un nodo de entrada y los nodos de la capa de incorporación de d dimensiones corresponden a los valores de coordenadas de cada uno de los d ejes.
+
+<img src="https://developers.google.com/static/machine-learning/crash-course/images/dnn-to-geometric-view.svg?hl=es-419">
