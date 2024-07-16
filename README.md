@@ -19,4 +19,5 @@ Mucha suerte con TODO!
 
 <hr/>
 
+** todo cambio debe ser documentado **
 <br/>
